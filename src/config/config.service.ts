@@ -61,6 +61,7 @@ export class ConfigService {
       SWAGGER_VERSION: str({ default: "1.0" }),
       //
       DB_URI: str(),
+      TEST_DB_URI: str(),
     };
 
     return cleanEnv(process.env, rule);
@@ -94,6 +95,7 @@ export class ConfigService {
       },
       dbOptions: {
         connectionUri: envConfig.DB_URI,
+        testConnectionUri: envConfig.TEST_DB_URI,
       },
     };
   }

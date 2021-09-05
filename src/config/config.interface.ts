@@ -117,6 +117,11 @@ export interface ConnectionOptions {
    * Database connection string
    */
   connectionUri?: string;
+  /**
+   * @description
+   * Database connection string for testing env
+   */
+  testConnectionUri?: string;
 }
 
 /**
