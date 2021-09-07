@@ -3,5 +3,5 @@ import { ObjectID } from "mongodb";
 
 export abstract class BaseEntitySchema {
   @Prop()
-  readonly _id: ObjectID;
+  readonly _id!: ObjectID;
 }
