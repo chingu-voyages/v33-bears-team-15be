@@ -8,7 +8,7 @@ export interface IUser {
   avatar: string;
   birthday: Date | null;
   biography: string;
-  role: `${UserRole}`;
+  role: UserRoleType;
   internalComment: string | null;
   firstLogin: Date;
   lastLogin: Date;
@@ -24,3 +24,5 @@ export enum UserRole {
   CRITIC,
   AUTHOR,
 }
+
+export type UserRoleType = `${UserRole}`;

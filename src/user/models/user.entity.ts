@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, SchemaTypes } from "mongoose";
 
 import { BaseEntitySchema } from "src/db/base.schema";
-import { IUser, UserRole } from "./user.interface";
+import { IUser, UserRole, UserRoleType } from "./user.interface";
 
 export type UserDocument = UserEntity & Document;
 
@@ -12,6 +12,7 @@ export class UserEntity extends BaseEntitySchema implements IUser {
   public email!: string;
 
   @Prop({
+    type: "String",
     unique: true,
     trim: true,
     default: null,
@@ -30,7 +31,7 @@ export class UserEntity extends BaseEntitySchema implements IUser {
   @Prop({ default: "", trim: true })
   public avatar!: string;
 
-  @Prop({ default: null })
+  @Prop({ type: "String", default: null })
   public birthday!: Date | null;
 
   @Prop({ default: "", trim: true })
@@ -41,9 +42,9 @@ export class UserEntity extends BaseEntitySchema implements IUser {
     enum: Object.values(UserRole),
     default: UserRole.READER,
   })
-  public role!: `${UserRole}`;
+  public role!: UserRoleType;
 
-  @Prop({ default: null })
+  @Prop({ type: "String", default: null })
   public internalComment!: string | null;
 
   @Prop({ require: true })
