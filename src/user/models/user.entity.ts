@@ -56,7 +56,7 @@ export class UserEntity extends BaseEntitySchema implements IUser {
   // TODO: update `readingList` type to the ReadingList Entity
   // once it has been created => `readingList!: ReadingList[]`
   @Prop({ type: [{ type: SchemaTypes.ObjectId, ref: "readingList" }] })
-  public readingList!: string[];
+  public readingList!: Record<string, unknown>[];
 
   // TODO: update `wishList` type to the Book Entity
   // once it has been created => `wishList!: Book[]`

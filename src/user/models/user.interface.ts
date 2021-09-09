@@ -12,7 +12,7 @@ export interface IUser {
   internalComment: string | null;
   firstLogin: Date;
   lastLogin: Date;
-  readingList: string[];
+  readingList: Record<string, unknown>[];
   wishList: string[];
 }
 

@@ -53,8 +53,30 @@ export class UserService {
     return userRecord;
   }
 
-  public update(id: number, _updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  public async update(id: string, updateUserDto: UpdateUserDto) {
+    const userRecord = await this.userRepository.findById(id);
+
+    if (!userRecord) {
+      throw new NotFoundException("No user record found!");
+    }
+
+    const updatedUserObject = {
+      email: updateUserDto.email || userRecord.email,
+      password: updateUserDto.password || userRecord.password,
+      username: updateUserDto.username || userRecord.username,
+      fullName: updateUserDto.fullName || userRecord.fullName,
+      avatar: updateUserDto.avatar || userRecord.avatar,
+      birthday: updateUserDto.birthday || userRecord.birthday,
+      biography: updateUserDto.biography || userRecord.biography,
+      readingList: updateUserDto.newList
+        ? [...userRecord.readingList, updateUserDto.newList]
+        : [...userRecord.readingList],
+      wishList: updateUserDto.newWish
+        ? [...userRecord.wishList, updateUserDto.newWish]
+        : [...userRecord.wishList],
+    };
+
+    return this.userRepository.findOneAndUpdate({ _id: id }, updatedUserObject);
   }
 
   public remove(id: number) {
