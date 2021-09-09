@@ -79,7 +79,15 @@ export class UserService {
     return this.userRepository.findOneAndUpdate({ _id: id }, updatedUserObject);
   }
 
-  public remove(id: number) {
-    return `This action removes a #${id} user`;
+  public async remove(id: string) {
+    const userRecord = await this.userRepository.findById(id);
+
+    if (!userRecord) {
+      throw new NotFoundException("No user record found!");
+    }
+
+    return {
+      deleted: await this.userRepository.deleteOne({ _id: id }),
+    };
   }
 }

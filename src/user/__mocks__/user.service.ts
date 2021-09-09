@@ -5,4 +5,5 @@ export const UserService = jest.fn().mockReturnValue({
   index: jest.fn().mockResolvedValue([userFixture]),
   show: jest.fn().mockResolvedValue(userFixture),
   update: jest.fn().mockResolvedValue(userFixture),
+  remove: jest.fn().mockResolvedValue(true),
 });
