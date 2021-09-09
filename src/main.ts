@@ -1,7 +1,7 @@
 import * as helmet from "helmet";
 import * as csurf from "csurf";
 import { NestFactory } from "@nestjs/core";
-import { Logger, VersioningType } from "@nestjs/common";
+import { Logger, ValidationPipe, VersioningType } from "@nestjs/common";
 import { SwaggerModule } from "@nestjs/swagger";
 
 import { ConfigService } from "./config/config.service";
@@ -21,6 +21,7 @@ async function bootstrap() {
   // API versioning
   app.enableVersioning({ type: VersioningType.URI });
   app.setGlobalPrefix(prefix);
+  app.useGlobalPipes(new ValidationPipe());
 
   app.enableCors(cors);
   if (env === Environment.Production) {

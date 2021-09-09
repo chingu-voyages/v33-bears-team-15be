@@ -6,7 +6,7 @@ import { IUser, UserRole, UserRoleType } from "./user.interface";
 
 export type UserDocument = UserEntity & Document;
 
-@Schema({ collection: "user" })
+@Schema({ collection: "users" })
 export class UserEntity extends BaseEntitySchema implements IUser {
   @Prop({ required: true, unique: true, trim: true })
   public email!: string;
