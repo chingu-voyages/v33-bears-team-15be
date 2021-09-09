@@ -18,15 +18,22 @@ export abstract class EntityRepository<T extends Document> {
   }
 
   public async find(
-    entityFilterQuery: FilterQuery<T>,
+    entityFilterQuery?: FilterQuery<T>,
     projection?: Record<string, unknown>
   ): Promise<T[] | null> {
     return this.entityModal
-      .find(entityFilterQuery, {
+      .find(entityFilterQuery || {}, {
         ...this.baseProjection,
         ...projection,
       })
       .exec();
+  }
+
+  public async findById(
+    entityId: string,
+    projection?: Record<string, unknown>
+  ): Promise<T | null> {
+    return this.entityModal.findById(entityId, { ...this.baseProjection, ...projection });
   }
 
   public async findOneAndUpdate(

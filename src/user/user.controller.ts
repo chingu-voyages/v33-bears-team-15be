@@ -30,7 +30,7 @@ export class UserController {
 
   @Get(":id")
   find(@Param("id") id: string) {
-    return this.userService.find(+id);
+    return this.userService.show(id);
   }
 
   @Patch(":id")
