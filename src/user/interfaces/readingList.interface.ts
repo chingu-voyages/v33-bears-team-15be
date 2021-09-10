@@ -1,6 +1,6 @@
 export interface IReadingList {
   name: string;
-  description: string;
+  description?: string;
   books: string[];
   kind: ReadingListType;
 }

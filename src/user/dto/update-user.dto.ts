@@ -1,8 +1,14 @@
 import { ApiProperty, PartialType } from "@nestjs/swagger";
-import { IsDate, IsOptional, MaxLength, MinLength } from "class-validator";
+import {
+  IsDate,
+  IsOptional,
+  MaxLength,
+  MinLength,
+  ValidateNested,
+} from "class-validator";
 
-import { IReadingList } from "../interfaces/readingList.interface";
 import { CreateUserDto } from "./create-user.dto";
+import { CreateReadingListDto } from "./readingList-create.dto";
 
 export class UpdateUserDto extends PartialType(CreateUserDto) {
   @ApiProperty({ type: "String", description: "Username", required: false })
@@ -31,7 +37,8 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     required: false,
   })
   @IsOptional()
-  newList?: IReadingList;
+  @ValidateNested()
+  newList?: CreateReadingListDto;
 
   @ApiProperty({
     type: "String",
