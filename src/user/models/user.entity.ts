@@ -2,7 +2,9 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, SchemaTypes } from "mongoose";
 
 import { BaseEntitySchema } from "@db/base.schema";
-import { IUser, UserRole, UserRoleType } from "./user.interface";
+import { ReadingListEntitySchema } from "./readingList.entity";
+import { IUser, UserRole, UserRoleType } from "../interfaces/user.interface";
+import { IReadingList } from "../interfaces/readingList.interface";
 
 export type UserDocument = UserEntity & Document;
 
@@ -53,10 +55,8 @@ export class UserEntity extends BaseEntitySchema implements IUser {
   @Prop({ required: true })
   public lastLogin!: Date;
 
-  // TODO: update `readingList` type to the ReadingList Entity
-  // once it has been created => `readingList!: ReadingList[]`
-  @Prop({ type: [{ type: SchemaTypes.ObjectId, ref: "readingList" }] })
-  public readingList!: Record<string, unknown>[];
+  @Prop({ type: [ReadingListEntitySchema] })
+  public readingList!: IReadingList[];
 
   // TODO: update `wishList` type to the Book Entity
   // once it has been created => `wishList!: Book[]`

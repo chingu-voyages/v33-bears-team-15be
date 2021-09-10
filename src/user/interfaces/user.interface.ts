@@ -1,5 +1,6 @@
-// TODO: Update `readinList` and `wishList` types
-// to `ReadinList[]` and `Book[]` when they are created
+import { IReadingList } from "./readingList.interface";
+
+// TODO: `Book[]` when it's created
 export interface IUser {
   email: string;
   username: string | null;
@@ -12,7 +13,7 @@ export interface IUser {
   internalComment: string | null;
   firstLogin: Date;
   lastLogin: Date;
-  readingList: Record<string, unknown>[];
+  readingList: IReadingList[];
   wishList: string[];
 }
 

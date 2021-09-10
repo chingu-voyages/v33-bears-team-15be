@@ -3,7 +3,7 @@ import { ConflictException, Injectable, NotFoundException } from "@nestjs/common
 import { UserRepository } from "./models/user.repository";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
-import { UserRole } from "./models/user.interface";
+import { UserRole } from "./interfaces/user.interface";
 
 @Injectable()
 export class UserService {
