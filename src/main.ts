@@ -15,9 +15,6 @@ async function bootstrap() {
   // Env config
   const { prefix, env, port, hostname, cors } = app.get(ConfigService).apiOptions;
 
-  // Swagger
-  SwaggerModule.setup(prefix, app, createdocument(app));
-
   // API versioning
   app.enableVersioning({ type: VersioningType.URI });
   app.setGlobalPrefix(prefix);
@@ -28,6 +25,9 @@ async function bootstrap() {
     app.use(helmet());
     app.use(csurf());
   }
+
+  // Swagger
+  SwaggerModule.setup(prefix, app, createdocument(app));
 
   await app.listen(port, () => {
     Logger.log(`Running at ${hostname}:${port}`, "NestApplication");
