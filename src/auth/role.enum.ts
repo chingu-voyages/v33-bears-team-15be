@@ -1,4 +1,4 @@
-export enum UserRole {
+export enum Role {
   SUPER_ADMIN = "1",
   ADMIN = "2",
   READER = "3",
@@ -7,4 +7,4 @@ export enum UserRole {
   AUTHOR = "6",
 }
 
-export type UserRoleType = `${UserRole}`;
+export type RoleType = `${Role}`;

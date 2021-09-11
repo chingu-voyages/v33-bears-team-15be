@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, SchemaTypes } from "mongoose";
 
 import { BaseEntitySchema } from "@db/base.schema";
-import { UserRole, UserRoleType } from "@/auth/role.enum";
+import { Role, RoleType } from "@/auth/role.enum";
 import { CreateReadingListDto } from "../dto/readingList-create.dto";
 
 export type UserDocument = UserEntity & Document;
@@ -39,10 +39,10 @@ export class UserEntity extends BaseEntitySchema {
 
   @Prop({
     required: true,
-    enum: Object.values(UserRole),
-    default: UserRole.READER,
+    enum: Object.values(Role),
+    default: Role.READER,
   })
-  public role!: UserRoleType;
+  public role!: RoleType;
 
   @Prop({ type: String, default: null })
   public internalComment!: string | null;

@@ -4,7 +4,7 @@ import { ConflictException, Injectable, UnauthorizedException } from "@nestjs/co
 
 import { ConfigService } from "@/config/config.service";
 import { UserRepository } from "@/user/models/user.repository";
-import { UserRole, UserRoleType } from "./role.enum";
+import { Role, RoleType } from "./role.enum";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { AuthDto } from "./dto/auth.dto";
 
@@ -16,7 +16,7 @@ export class AuthService {
     private readonly configService: ConfigService
   ) {}
 
-  private signUser(id: string, role: UserRoleType) {
+  private signUser(id: string, role: RoleType) {
     return this.jwtService.sign({
       sub: id,
       claim: role,
@@ -28,7 +28,7 @@ export class AuthService {
       email,
       password: hash,
       fullName,
-      role: UserRole.READER,
+      role: Role.READER,
       firstLogin: new Date(Date.now()),
       lastLogin: new Date(Date.now()),
       readingList: [],
