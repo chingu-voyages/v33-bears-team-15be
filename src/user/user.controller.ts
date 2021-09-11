@@ -31,6 +31,11 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @ApiBody({ type: CreateReadingListDto })
+  @ApiCreatedResponse({ description: "The record has been successfully created." })
+  @ApiBadRequestResponse({ description: "The record has failed validation." })
+  @ApiConflictResponse({ description: "The record has an internal conflict." })
+  @ApiForbiddenResponse({ description: "Forbidden!" })
   @Post(":id/list")
   createList(
     @Param("id") id: string,
