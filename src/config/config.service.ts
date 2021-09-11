@@ -55,6 +55,7 @@ export class ConfigService {
       JWT_SECRET_KEY: str(),
       TOKEN_DURATION: str({ default: "7d" }),
       SUPERADMIN_PASSWORD: str({ devDefault: "superpassword" }),
+      AUTH_PEPPER: str(),
       //
       SWAGGER_TITLE: str({ default: "Setism API Docs" }),
       SWAGGER_DESCRIPTION: str({ default: "API documentation for Setism" }),
@@ -92,6 +93,7 @@ export class ConfigService {
         verificationTokenDuration: envConfig.TOKEN_DURATION,
         superadminCredentials: { password: envConfig.SUPERADMIN_PASSWORD },
         jwtSecretKey: envConfig.JWT_SECRET_KEY,
+        pepper: envConfig.AUTH_PEPPER,
       },
       dbOptions: {
         connectionUri: envConfig.DB_URI,

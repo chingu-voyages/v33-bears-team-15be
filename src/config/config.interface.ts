@@ -82,6 +82,11 @@ export interface AuthOptions {
    * Sets the secret key for decoding and validating a JWT access token
    */
   jwtSecretKey?: string;
+  /**
+   * @description
+   * Extra security layer for hashing passwords
+   */
+  pepper?: string;
 }
 
 export interface SuperadminCredentials {
