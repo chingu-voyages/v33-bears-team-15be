@@ -14,6 +14,7 @@ import {
 import { UserService } from "./user.service";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
+import { CreateReadingListDto } from "./dto/readingList-create.dto";
 
 @ApiTags("users")
 @Controller({ version: "1", path: "users" })
@@ -28,6 +29,14 @@ export class UserController {
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
+  }
+
+  @Post(":id/list")
+  createList(
+    @Param("id") id: string,
+    @Body() createReadingListDto: CreateReadingListDto
+  ) {
+    return this.userService.createList(id, createReadingListDto);
   }
 
   @ApiOkResponse({ description: "The record has been successfully returned." })

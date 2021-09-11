@@ -1,9 +1,10 @@
-import { ConflictException, Injectable, NotFoundException } from "@nestjs/common";
+import { ConflictException, Injectable, Logger, NotFoundException } from "@nestjs/common";
 
 import { UserRepository } from "./models/user.repository";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { UserRole } from "./interfaces/user.interface";
+import { CreateReadingListDto } from "./dto/readingList-create.dto";
 
 @Injectable()
 export class UserService {
@@ -68,15 +69,12 @@ export class UserService {
       avatar: updateUserDto.avatar || userRecord.avatar,
       birthday: updateUserDto.birthday || userRecord.birthday,
       biography: updateUserDto.biography || userRecord.biography,
-      readingList: updateUserDto.newList
-        ? [...userRecord.readingList, updateUserDto.newList]
-        : [...userRecord.readingList],
       wishList: updateUserDto.newWish
         ? [...userRecord.wishList, updateUserDto.newWish]
         : [...userRecord.wishList],
     };
 
-    return this.userRepository.findOneAndUpdate({ _id: id }, updatedUserObject);
+    return this.userRepository.findByIdAndUpdate(id, updatedUserObject);
   }
 
   public async remove(id: string) {
@@ -89,5 +87,19 @@ export class UserService {
     return {
       deleted: await this.userRepository.deleteOne({ _id: id }),
     };
+  }
+
+  public async createList(id: string, createReadingListDto: CreateReadingListDto) {
+    const userRecord = await this.userRepository.findById(id);
+
+    if (!userRecord) {
+      throw new NotFoundException("No user record found!");
+    }
+
+    const updatedUserObject = {
+      readingList: [...userRecord.readingList, createReadingListDto],
+    };
+
+    return this.userRepository.findByIdAndUpdate(id, updatedUserObject);
   }
 }

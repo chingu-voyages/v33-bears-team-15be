@@ -36,12 +36,13 @@ export abstract class EntityRepository<T extends Document> {
     return this.entityModal.findById(entityId, { ...this.baseProjection, ...projection });
   }
 
-  public async findOneAndUpdate(
-    entityFilterQuery: FilterQuery<T>,
+  public async findByIdAndUpdate(
+    entityId: string,
     updateEntityData: UpdateQuery<T>
   ): Promise<T | null> {
-    return this.entityModal.findOneAndUpdate(entityFilterQuery, updateEntityData, {
+    return this.entityModal.findByIdAndUpdate(entityId, updateEntityData, {
       new: true,
+      useFindAndModify: false,
     });
   }
 

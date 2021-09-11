@@ -2,9 +2,9 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, SchemaTypes } from "mongoose";
 
 import { BaseEntitySchema } from "@db/base.schema";
-import { ReadingListEntitySchema } from "./readingList.entity";
 import { IUser, UserRole, UserRoleType } from "../interfaces/user.interface";
 import { IReadingList } from "../interfaces/readingList.interface";
+import { CreateReadingListDto } from "../dto/readingList-create.dto";
 
 export type UserDocument = UserEntity & Document;
 
@@ -14,7 +14,7 @@ export class UserEntity extends BaseEntitySchema implements IUser {
   public email!: string;
 
   @Prop({
-    type: "String",
+    type: String,
     unique: true,
     trim: true,
     default: null,
@@ -33,7 +33,7 @@ export class UserEntity extends BaseEntitySchema implements IUser {
   @Prop({ default: "", trim: true })
   public avatar!: string;
 
-  @Prop({ type: "String", default: null })
+  @Prop({ type: String, default: null })
   public birthday!: Date | null;
 
   @Prop({ default: "", trim: true })
@@ -46,7 +46,7 @@ export class UserEntity extends BaseEntitySchema implements IUser {
   })
   public role!: UserRoleType;
 
-  @Prop({ type: "String", default: null })
+  @Prop({ type: String, default: null })
   public internalComment!: string | null;
 
   @Prop({ require: true })
@@ -55,7 +55,7 @@ export class UserEntity extends BaseEntitySchema implements IUser {
   @Prop({ required: true })
   public lastLogin!: Date;
 
-  @Prop({ type: [ReadingListEntitySchema] })
+  @Prop([CreateReadingListDto])
   public readingList!: IReadingList[];
 
   // TODO: update `wishList` type to the Book Entity
