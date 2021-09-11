@@ -56,8 +56,6 @@ export class AuthService {
       throw new UnauthorizedException("Incorrect email or password!");
     }
 
-    console.log(this.configService.authOptions.jwtSecretKey);
-
     const { password, __v, ...userRecordWithoutPassword } = userRecord.toObject();
 
     return {

@@ -23,7 +23,9 @@ import {
 import { UserService } from "./user.service";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { CreateReadingListDto } from "./dto/readingList-create.dto";
-import { JwtAuthGuard } from "@/auth/guards/jwt.guard";
+import { JwtAuthGuard, RolesGuard } from "@/auth/guards";
+import { UseRoles } from "@/auth/decorators/role.decorator";
+import { Role } from "@/auth/role.enum";
 
 @ApiTags("users")
 @Controller({ version: "1", path: "users" })
@@ -46,7 +48,8 @@ export class UserController {
   @ApiOkResponse({ description: "The record has been successfully returned." })
   @ApiNotFoundResponse({ description: "The record was not found." })
   @ApiForbiddenResponse({ description: "Forbidden!" })
-  @UseGuards(JwtAuthGuard)
+  @UseRoles(Role.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
   index() {
     return this.userService.index();
