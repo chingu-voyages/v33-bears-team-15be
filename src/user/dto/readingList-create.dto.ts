@@ -7,7 +7,7 @@ import {
   MinLength,
 } from "class-validator";
 
-import { ReadingListKind, ReadingListType } from "../interfaces/readingList.interface";
+import { ReadingListKind, ReadingListType } from "../reading-list.enum";
 
 export class CreateReadingListDto {
   @IsString()

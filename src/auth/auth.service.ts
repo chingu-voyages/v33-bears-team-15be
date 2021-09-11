@@ -4,7 +4,7 @@ import { ConflictException, Injectable, UnauthorizedException } from "@nestjs/co
 
 import { ConfigService } from "@/config/config.service";
 import { UserRepository } from "@/user/models/user.repository";
-import { UserRole, UserRoleType } from "./interfaces/role.interface";
+import { UserRole, UserRoleType } from "./role.enum";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { AuthDto } from "./dto/auth.dto";
 
