@@ -18,27 +18,35 @@ export abstract class EntityRepository<T extends Document> {
   }
 
   public async find(
-    entityFilterQuery: FilterQuery<T>,
+    entityFilterQuery?: FilterQuery<T>,
     projection?: Record<string, unknown>
   ): Promise<T[] | null> {
     return this.entityModal
-      .find(entityFilterQuery, {
+      .find(entityFilterQuery || {}, {
         ...this.baseProjection,
         ...projection,
       })
       .exec();
   }
 
-  public async findOneAndUpdate(
-    entityFilterQuery: FilterQuery<T>,
+  public async findById(
+    entityId: string,
+    projection?: Record<string, unknown>
+  ): Promise<T | null> {
+    return this.entityModal.findById(entityId, { ...this.baseProjection, ...projection });
+  }
+
+  public async findByIdAndUpdate(
+    entityId: string,
     updateEntityData: UpdateQuery<T>
   ): Promise<T | null> {
-    return this.entityModal.findOneAndUpdate(entityFilterQuery, updateEntityData, {
+    return this.entityModal.findByIdAndUpdate(entityId, updateEntityData, {
       new: true,
+      useFindAndModify: false,
     });
   }
 
-  public async create(createEntityData: T): Promise<T> {
+  public async create(createEntityData: Partial<T>): Promise<T> {
     const entity = new this.entityModal(createEntityData);
     return entity.save();
   }

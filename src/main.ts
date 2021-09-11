@@ -1,7 +1,7 @@
 import * as helmet from "helmet";
 import * as csurf from "csurf";
 import { NestFactory } from "@nestjs/core";
-import { Logger, VersioningType } from "@nestjs/common";
+import { Logger, ValidationPipe, VersioningType } from "@nestjs/common";
 import { SwaggerModule } from "@nestjs/swagger";
 
 import { ConfigService } from "./config/config.service";
@@ -15,18 +15,19 @@ async function bootstrap() {
   // Env config
   const { prefix, env, port, hostname, cors } = app.get(ConfigService).apiOptions;
 
-  // Swagger
-  SwaggerModule.setup(prefix, app, createdocument(app));
-
   // API versioning
   app.enableVersioning({ type: VersioningType.URI });
   app.setGlobalPrefix(prefix);
+  app.useGlobalPipes(new ValidationPipe());
 
   app.enableCors(cors);
   if (env === Environment.Production) {
     app.use(helmet());
     app.use(csurf());
   }
+
+  // Swagger
+  SwaggerModule.setup(prefix, app, createdocument(app));
 
   await app.listen(port, () => {
     Logger.log(`Running at ${hostname}:${port}`, "NestApplication");
