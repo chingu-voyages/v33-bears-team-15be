@@ -2,20 +2,18 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, SchemaTypes } from "mongoose";
 
 import { BaseEntitySchema } from "@db/base.schema";
-import { IUser, UserRole, UserRoleType } from "../interfaces/user.interface";
-import { IReadingList } from "../interfaces/readingList.interface";
+import { Role, RoleType } from "@/auth/role.enum";
 import { CreateReadingListDto } from "../dto/readingList-create.dto";
 
 export type UserDocument = UserEntity & Document;
 
 @Schema({ collection: "users" })
-export class UserEntity extends BaseEntitySchema implements IUser {
+export class UserEntity extends BaseEntitySchema {
   @Prop({ required: true, unique: true, trim: true })
   public email!: string;
 
   @Prop({
     type: String,
-    unique: true,
     trim: true,
     default: null,
     minlength: 3,
@@ -41,10 +39,10 @@ export class UserEntity extends BaseEntitySchema implements IUser {
 
   @Prop({
     required: true,
-    enum: Object.values(UserRole),
-    default: UserRole.READER,
+    enum: Object.values(Role),
+    default: Role.READER,
   })
-  public role!: UserRoleType;
+  public role!: RoleType;
 
   @Prop({ type: String, default: null })
   public internalComment!: string | null;
@@ -56,7 +54,7 @@ export class UserEntity extends BaseEntitySchema implements IUser {
   public lastLogin!: Date;
 
   @Prop([CreateReadingListDto])
-  public readingList!: IReadingList[];
+  public readingList!: CreateReadingListDto[];
 
   // TODO: update `wishList` type to the Book Entity
   // once it has been created => `wishList!: Book[]`
