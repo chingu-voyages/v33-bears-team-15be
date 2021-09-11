@@ -2,7 +2,8 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, SchemaTypes } from "mongoose";
 
 import { BaseEntitySchema } from "@db/base.schema";
-import { IUser, UserRole, UserRoleType } from "../interfaces/user.interface";
+import { UserRole, UserRoleType } from "@/auth/interfaces/role.interface";
+import { IUser } from "../interfaces/user.interface";
 import { IReadingList } from "../interfaces/readingList.interface";
 import { CreateReadingListDto } from "../dto/readingList-create.dto";
 
@@ -15,7 +16,6 @@ export class UserEntity extends BaseEntitySchema implements IUser {
 
   @Prop({
     type: String,
-    unique: true,
     trim: true,
     default: null,
     minlength: 3,

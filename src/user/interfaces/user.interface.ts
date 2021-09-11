@@ -1,3 +1,4 @@
+import { UserRoleType } from "@/auth/interfaces/role.interface";
 import { IReadingList } from "./readingList.interface";
 
 // TODO: `Book[]` when it's created
@@ -16,14 +17,3 @@ export interface IUser {
   readingList: IReadingList[];
   wishList: string[];
 }
-
-export enum UserRole {
-  SUPER_ADMIN = "1",
-  ADMIN = "2",
-  READER = "3",
-  PUBLISHER = "4",
-  CRITIC = "5",
-  AUTHOR = "6",
-}
-
-export type UserRoleType = `${UserRole}`;

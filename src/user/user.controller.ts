@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+} from "@nestjs/common";
 import {
   ApiBadRequestResponse,
   ApiBody,
@@ -12,24 +21,14 @@ import {
 } from "@nestjs/swagger";
 
 import { UserService } from "./user.service";
-import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { CreateReadingListDto } from "./dto/readingList-create.dto";
+import { JwtAuthGuard } from "@/auth/guards/jwt.guard";
 
 @ApiTags("users")
 @Controller({ version: "1", path: "users" })
 export class UserController {
   constructor(private readonly userService: UserService) {}
-
-  @ApiBody({ type: CreateUserDto })
-  @ApiCreatedResponse({ description: "The record has been successfully created." })
-  @ApiBadRequestResponse({ description: "The record has failed validation." })
-  @ApiConflictResponse({ description: "The record has an internal conflict." })
-  @ApiForbiddenResponse({ description: "Forbidden!" })
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
-  }
 
   @ApiBody({ type: CreateReadingListDto })
   @ApiCreatedResponse({ description: "The record has been successfully created." })
@@ -47,6 +46,7 @@ export class UserController {
   @ApiOkResponse({ description: "The record has been successfully returned." })
   @ApiNotFoundResponse({ description: "The record was not found." })
   @ApiForbiddenResponse({ description: "Forbidden!" })
+  @UseGuards(JwtAuthGuard)
   @Get()
   index() {
     return this.userService.index();

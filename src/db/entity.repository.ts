@@ -1,7 +1,7 @@
 import { Document, FilterQuery, Model, UpdateQuery } from "mongoose";
 
 export abstract class EntityRepository<T extends Document> {
-  private readonly baseProjection = { _id: 0, __v: 0 };
+  private readonly baseProjection = { __v: 0 };
 
   constructor(protected readonly entityModal: Model<T>) {}
 
