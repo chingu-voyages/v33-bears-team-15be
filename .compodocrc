@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/@compodoc/compodoc/src/config/schema.json",
+  "name": "Dekoo BE documentation",
+  "tsconfig": "./tsconfig.docs.json",
+  "port": 5454,
+  "theme": "material",
+  "output": "docs",
+  "hideGenerator": true,
+  "customLogo": "./assets/logo.png",
+  "customFavicon": "./assets/favicon.png",
+  "navTabConfig": [
+    {
+      "id": "info",
+      "label": "API Info"
+    }
+  ]
+}

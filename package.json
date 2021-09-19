@@ -1,8 +1,15 @@
 {
   "name": "chingu-be",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.5",
+  "description": "We all seen services that provides virtual books at outrageous prices and at Dekoo we think that is a stopping point for a lot of people. That inspired us to build a service that will provide access to free reading titles along with accessible prices for anyone and everyone.",
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chingu-voyages/v33-bears-team-15be.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chingu-voyages/v33-bears-team-15be/issues"
+  },
   "license": "MIT",
   "engines": {
     "node": "14.17.6",
@@ -22,7 +29,9 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "doc": "npx compodoc",
+    "doc:serve": "npm run doc && npx compodoc -s"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -50,6 +59,7 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@compodoc/compodoc": "^1.1.15",
     "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
