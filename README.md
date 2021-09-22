@@ -106,13 +106,13 @@ please see the document [How to Contribute](./CONTRIBUTING.md), which covers the
 
 ## Feedback
 
-- [Request a new feature](https://github.com/chingu-voyages/v33-bears-team-15/issues)
+- [Request a new feature](https://github.com/chingu-voyages/v33-bears-team-15/issues/new/choose)
 - Upvote [feature requests](https://github.com/chingu-voyages/v33-bears-team-15/labels/feature-request)
 - [File an issue](https://github.com/chingu-voyages/v33-bears-team-15/issues/new/choose)
 
 ## Contributors
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. See more details about the [contributors](https://github.com/chingu-voyages/v33-bears-team-15/graphs/contributors)
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. See more details about the [contributors](https://github.com/chingu-voyages/v33-bears-team-15be/graphs/contributors)
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
