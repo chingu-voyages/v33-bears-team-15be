@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
   <a href="http://www.dekoo.tk">
-    <img src="./src/assets/images/logo-dark.png" alt="Dekoo branding" width="345">
+    <img src="./assets/logo.png" alt="Dekoo branding" width="345">
   </a>
   <br />
   Read anytime, anywhere.
@@ -24,7 +24,7 @@
   <a href="#acknowledgements">Acknowledgements</a>
 </p>
 
-![dekoo preview](./public/images/preview.png)
+![dekoo preview](./assets/preview.png)
 
 <!-- Links -->
 
