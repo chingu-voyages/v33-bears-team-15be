@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
   <a href="http://www.dekoo.tk">
-    <img src="./assets/logo.png" alt="Dekoo branding" width="345">
+    <img src="./assets/logo.png" alt="Dekoo branding" width="385">
   </a>
   <br />
   Read anytime, anywhere.
