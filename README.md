@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
   <a href="http://www.dekoo.tk">
-    <img src="./assets/logo.png" alt="Dekoo branding" width="385">
+    <img src="https://raw.githubusercontent.com/chingu-voyages/v33-bears-team-15be/develop/assets/logo.png" alt="Dekoo branding" width="385">
   </a>
   <br />
   Read anytime, anywhere.
@@ -24,7 +24,7 @@
   <a href="#acknowledgements">Acknowledgements</a>
 </p>
 
-![dekoo preview](./assets/preview.png)
+![dekoo preview](https://raw.githubusercontent.com/chingu-voyages/v33-bears-team-15be/develop/assets/preview.png)
 
 <!-- Links -->
 
