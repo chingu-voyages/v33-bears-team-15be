@@ -46,7 +46,7 @@ export class ConfigService {
         default: "development",
       }) as ValidatorSpec<RuntimeSetismConfig["apiOptions"]["env"]>,
       //
-      NAME: str({ default: "setism" }),
+      NAME: str({ default: "dekoo" }),
       PROTOCOL: str({ choices: ["http", "https"], default: "http" }),
       PORT: port({ default: 3000 }),
       HOSTNAME: str(),
@@ -57,8 +57,11 @@ export class ConfigService {
       SUPERADMIN_PASSWORD: str({ devDefault: "superpassword" }),
       AUTH_PEPPER: str(),
       //
-      SWAGGER_TITLE: str({ default: "Setism API Docs" }),
-      SWAGGER_DESCRIPTION: str({ default: "API documentation for Setism" }),
+      SWAGGER_TITLE: str({ default: "Dekoo API Documentation" }),
+      SWAGGER_DESCRIPTION: str({
+        default:
+          "Welcome to Dekoo API Docs. Below you will find a current list of the available methods on our user, book, review and category API. If you need help or support, please contact the development team.",
+      }),
       SWAGGER_VERSION: str({ default: "1.0" }),
       //
       DB_URI: str(),
