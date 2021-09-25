@@ -13,8 +13,8 @@ export class CategoryEntity extends BaseEntitySchema {
   @Prop({ required: true, trim: true, minlength: 20, maxlength: 2048 })
   description!: string;
 
-  @Prop({ required: false, type: SchemaTypes.ObjectId, ref: "categories" })
-  parent!: CategoryEntity;
+  @Prop({ required: false, type: SchemaTypes.ObjectId, ref: "categories", default: null })
+  parent!: CategoryEntity | null;
 }
 
 export const CategoryEntitySchema = SchemaFactory.createForClass(CategoryEntity);
