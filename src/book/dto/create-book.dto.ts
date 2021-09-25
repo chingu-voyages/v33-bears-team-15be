@@ -1,7 +1,7 @@
 import {
-  IsDate,
   IsDefined,
   IsISBN,
+  IsNumberString,
   IsString,
   MaxLength,
   MinLength,
@@ -50,8 +50,8 @@ export class CreateBookDto {
   @IsDefined({ message: "Categories must not be empty!" })
   categories!: string[];
 
-  @ApiProperty({ description: "Date of the book release", default: new Date(Date.now()) })
-  @IsDate({ message: "Realease Date must be a valid Date type!" })
+  @ApiProperty({ description: "Date of the book release", default: 1519211809934 })
+  @IsNumberString({}, { message: "Release Date must be a positive number!" })
   @IsDefined({ message: "Release Date must not be empty!" })
-  releaseDate!: Date;
+  releaseDate!: number;
 }

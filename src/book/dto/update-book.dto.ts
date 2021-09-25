@@ -1,5 +1,5 @@
 import { ApiProperty, PartialType } from "@nestjs/swagger";
-import { IsDate, IsOptional, IsPositive, IsString } from "class-validator";
+import { IsOptional, IsPositive, IsString } from "class-validator";
 import { CreateBookDto } from "./create-book.dto";
 
 export class UpdateBookDto extends PartialType(CreateBookDto) {
@@ -14,9 +14,8 @@ export class UpdateBookDto extends PartialType(CreateBookDto) {
   srcCoverPath?: string;
 
   @ApiProperty({ description: "Book file source path", required: false })
-  @IsDate({ message: "Published Date must be a valid Date type!" })
   @IsOptional()
-  publishedDate?: Date;
+  publishedDate?: number;
 
   @ApiProperty({ description: "A list of book review ID references", required: false })
   @IsString({ each: true, message: "Review Must be of type string!" })
