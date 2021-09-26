@@ -1,6 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDefined, IsOptional, IsString, MaxLength, MinLength } from "class-validator";
 
+import { CategoryEntity } from "../models/category.entity";
+
 export class CreateCategoryDto {
   @ApiProperty({ description: "Category name", default: "Literary Fiction" })
   @IsString({ message: "Name must be of type string!" })
@@ -24,5 +26,5 @@ export class CreateCategoryDto {
     default: null,
   })
   @IsOptional()
-  parent!: string | null;
+  parent!: CategoryEntity | null;
 }
