@@ -17,8 +17,8 @@ export class AuthorEntity extends BaseEntitySchema {
   @Prop({ required: true, type: [{ type: SchemaTypes.ObjectId, ref: "books" }] })
   public books!: BookEntity[];
 
-  @Prop({ required: false, default: "", trim: true })
-  public avatar?: string;
+  @Prop({ required: false, type: String, default: null, trim: true })
+  public avatar?: string | null;
 }
 
 export const AuthorEntitySchema = SchemaFactory.createForClass(AuthorEntity);
