@@ -19,6 +19,7 @@ export class CreateAuthorDto {
   avatar?: string;
 
   @ApiProperty({ description: "A list of all author's book IDs", default: [] })
-  @IsDefined({ message: "Books must not be empty!" })
+  @IsString({ each: true, message: "Book entry must be of type string!" })
+  @IsDefined({ message: "Author books must not be empty!" })
   books!: BookEntity[];
 }
