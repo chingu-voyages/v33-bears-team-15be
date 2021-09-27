@@ -1,6 +1,6 @@
 import { ConflictException, Injectable, Logger, NotFoundException } from "@nestjs/common";
 
-import { ProcessFile, formatBookName } from "@/utils";
+import { ProcessFile, formatStringForPath } from "@/utils";
 import { CreateBookDto } from "./dto/create-book.dto";
 import { UpdateBookDto } from "./dto/update-book.dto";
 import { UploadBookDto } from "./dto/upload-book.dto";
@@ -13,7 +13,7 @@ export class BookService {
   private async processUploadedFiles(f: UploadBookDto, bookName: string) {
     const coverImage: Buffer | undefined = f.cover?.[0].buffer;
     const pdfFile: Buffer | undefined = f.file?.[0].buffer;
-    const formattedBookName: string = formatBookName(bookName);
+    const formattedBookName: string = formatStringForPath(bookName);
 
     const pImg: ProcessFile = new ProcessFile({
       fileBuffer: coverImage,

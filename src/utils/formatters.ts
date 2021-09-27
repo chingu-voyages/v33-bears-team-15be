@@ -5,6 +5,6 @@
  * @example
  * `My Book` -> `my-book`
  */
-export function formatBookName(rawName: string): string {
+export function formatStringForPath(rawName: string): string {
   return rawName.toLowerCase().replace(/\s+/g, "-").trim();
 }
