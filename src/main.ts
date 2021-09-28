@@ -1,5 +1,8 @@
 import * as helmet from "helmet";
+import * as express from "express";
+import { join } from "path";
 import { NestFactory } from "@nestjs/core";
+import { NestExpressApplication } from "@nestjs/platform-express";
 import { Logger, ValidationPipe, VersioningType } from "@nestjs/common";
 import { SwaggerModule, SwaggerCustomOptions } from "@nestjs/swagger";
 
@@ -8,8 +11,10 @@ import { Environment } from "./config/config.interface";
 import { AppModule } from "./app.module";
 import { createdocument } from "./swagger";
 
+const LOG_LABEL = "BOOTSTRAP";
+
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   // Env config
   const { prefix, env, port, hostname, cors, swagger } =
@@ -19,6 +24,7 @@ async function bootstrap() {
   app.enableVersioning({ type: VersioningType.URI });
   app.setGlobalPrefix(prefix);
   app.useGlobalPipes(new ValidationPipe());
+  app.use("/static", express.static(join(process.cwd(), "bucket")));
 
   app.enableCors(cors);
   if (env === Environment.Production) {
@@ -33,14 +39,14 @@ async function bootstrap() {
     explorer: true,
     customCss: ".swagger-ui .topbar { display: none }",
     customSiteTitle: swagger.title,
-    customfavIcon: "",
+    customfavIcon: join(process.cwd(), "assets", "favicon.png"),
   };
 
   SwaggerModule.setup("/", app, createdocument(app), options);
 
   await app.listen(port, () => {
-    Logger.log(`Running at ${hostname}:${port}`, "NestApplication");
-    Logger.log(`Running in ${env} mode`, "NestApplication");
+    Logger.log(`Running at ${hostname}:${port}`, LOG_LABEL);
+    Logger.log(`Running in ${env} mode`, LOG_LABEL);
   });
 }
 bootstrap();
