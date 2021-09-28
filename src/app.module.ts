@@ -5,6 +5,7 @@ import { DatabaseModule } from "./db/db.module";
 import { UserModule } from "./user/user.module";
 import { AuthModule } from "./auth/auth.module";
 import { BookModule } from "./book/book.module";
+import { AuthorModule } from "./author/author.module";
 import { CategoryModule } from "./category/category.module";
 
 @Module({
@@ -14,6 +15,7 @@ import { CategoryModule } from "./category/category.module";
     UserModule,
     AuthModule,
     BookModule,
+    AuthorModule,
     CategoryModule,
   ],
   controllers: [],
