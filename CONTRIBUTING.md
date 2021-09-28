@@ -25,6 +25,8 @@ We require you to use `volta` to manage your npm and node environment versions
 
 - volta
   - [Getting Started](https://docs.volta.sh/guide/getting-started)
+- yarn
+  - [Installation](https://classic.yarnpkg.com/en/docs/install#debian-stable)
 
 ## Getting Started
 
@@ -34,11 +36,11 @@ We require you to use `volta` to manage your npm and node environment versions
 2. Clone the repo
 3. Install NPM packages
    ```sh
-   npm install
+   yarn install
    ```
 4. Run development server
    ```sh
-   npm run dev
+   yarn start:dev
    ```
 
 ### Branching
