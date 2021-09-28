@@ -126,6 +126,144 @@ customElements.define(
                                 </li>
                             </li>
                             <li class="link">
+                                <a href="modules/AuthorModule.html" data-type="entity-link" >AuthorModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${
+                                          isNormalMode
+                                            ? 'data-target="#controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
+                                            : 'data-target="#xs-controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
+                                        }>
+                                            <span class="icon ion-md-swap"></span>
+                                            <span>Controllers</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${
+                                          isNormalMode
+                                            ? 'id="controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
+                                            : 'id="xs-controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
+                                        }>
+                                            <li class="link">
+                                                <a href="controllers/AuthorController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AuthorController</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${
+                                      isNormalMode
+                                        ? 'data-target="#injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
+                                        : 'data-target="#xs-injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
+                                    }>
+                                        <span class="icon ion-md-arrow-round-down"></span>
+                                        <span>Injectables</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${
+                                      isNormalMode
+                                        ? 'id="injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
+                                        : 'id="xs-injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
+                                    }>
+                                        <li class="link">
+                                            <a href="injectables/AuthorRepository.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AuthorRepository</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="injectables/AuthorService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AuthorService</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/BookModule.html" data-type="entity-link" >BookModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${
+                                          isNormalMode
+                                            ? 'data-target="#controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
+                                            : 'data-target="#xs-controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
+                                        }>
+                                            <span class="icon ion-md-swap"></span>
+                                            <span>Controllers</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${
+                                          isNormalMode
+                                            ? 'id="controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
+                                            : 'id="xs-controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
+                                        }>
+                                            <li class="link">
+                                                <a href="controllers/BookController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BookController</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${
+                                      isNormalMode
+                                        ? 'data-target="#injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
+                                        : 'data-target="#xs-injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
+                                    }>
+                                        <span class="icon ion-md-arrow-round-down"></span>
+                                        <span>Injectables</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${
+                                      isNormalMode
+                                        ? 'id="injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
+                                        : 'id="xs-injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
+                                    }>
+                                        <li class="link">
+                                            <a href="injectables/BookRepository.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BookRepository</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="injectables/BookService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BookService</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/CategoryModule.html" data-type="entity-link" >CategoryModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${
+                                          isNormalMode
+                                            ? 'data-target="#controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
+                                            : 'data-target="#xs-controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
+                                        }>
+                                            <span class="icon ion-md-swap"></span>
+                                            <span>Controllers</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${
+                                          isNormalMode
+                                            ? 'id="controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
+                                            : 'id="xs-controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
+                                        }>
+                                            <li class="link">
+                                                <a href="controllers/CategoryController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CategoryController</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${
+                                      isNormalMode
+                                        ? 'data-target="#injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
+                                        : 'data-target="#xs-injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
+                                    }>
+                                        <span class="icon ion-md-arrow-round-down"></span>
+                                        <span>Injectables</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${
+                                      isNormalMode
+                                        ? 'id="injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
+                                        : 'id="xs-injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
+                                    }>
+                                        <li class="link">
+                                            <a href="injectables/CategoryRepository.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CategoryRepository</a>
+                                        </li>
+                                        <li class="link">
+                                            <a href="injectables/CategoryService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CategoryService</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/ConfigModule.html" data-type="entity-link" >ConfigModule</a>
                             </li>
                             <li class="link">
@@ -216,10 +354,28 @@ customElements.define(
                                 <a href="classes/AuthDto.html" data-type="entity-link" >AuthDto</a>
                             </li>
                             <li class="link">
+                                <a href="classes/AuthorEntity.html" data-type="entity-link" >AuthorEntity</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/BaseEntitySchema.html" data-type="entity-link" >BaseEntitySchema</a>
                             </li>
                             <li class="link">
+                                <a href="classes/BookEntity.html" data-type="entity-link" >BookEntity</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/CategoryEntity.html" data-type="entity-link" >CategoryEntity</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/ConfigService.html" data-type="entity-link" >ConfigService</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/CreateAuthorDto.html" data-type="entity-link" >CreateAuthorDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/CreateBookDto.html" data-type="entity-link" >CreateBookDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/CreateCategoryDto.html" data-type="entity-link" >CreateCategoryDto</a>
                             </li>
                             <li class="link">
                                 <a href="classes/CreateReadingListDto.html" data-type="entity-link" >CreateReadingListDto</a>
@@ -231,7 +387,22 @@ customElements.define(
                                 <a href="classes/EntityRepository.html" data-type="entity-link" >EntityRepository</a>
                             </li>
                             <li class="link">
+                                <a href="classes/ProcessFile.html" data-type="entity-link" >ProcessFile</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/UpdateAuthorDto.html" data-type="entity-link" >UpdateAuthorDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/UpdateBookDto.html" data-type="entity-link" >UpdateBookDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/UpdateCategoryDto.html" data-type="entity-link" >UpdateCategoryDto</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/UpdateUserDto.html" data-type="entity-link" >UpdateUserDto</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/UploadBookDto.html" data-type="entity-link" >UploadBookDto</a>
                             </li>
                             <li class="link">
                                 <a href="classes/UserEntity.html" data-type="entity-link" >UserEntity</a>
@@ -299,6 +470,12 @@ customElements.define(
                             </li>
                             <li class="link">
                                 <a href="interfaces/ConnectionOptions.html" data-type="entity-link" >ConnectionOptions</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IProcessFile.html" data-type="entity-link" >IProcessFile</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/IResizeImageArgs.html" data-type="entity-link" >IResizeImageArgs</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/RuntimeSetismConfig.html" data-type="entity-link" >RuntimeSetismConfig</a>

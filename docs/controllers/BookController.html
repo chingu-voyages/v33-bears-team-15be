@@ -29,243 +29,108 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content miscellaneous-functions">
+               <div class="content controller">
                    <div class="content-data">
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <ol class="breadcrumb">
-  <li>Miscellaneous</li>
-  <li>Functions</li>
+  <li>Controllers</li>
+  <li >BookController</li>
 </ol>
 
-<section>
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">API Info</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/book/book.controller.ts</code>
+        </p>
+
+
+
+
+
+
+
+            <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <ul class="index-list">
-                        <li>
-                            <a href="#bootstrap" title="src/main.ts" ><b>bootstrap</b>&nbsp;&nbsp;&nbsp;(src/.../main.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#createdocument" title="src/swagger.ts" ><b>createdocument</b>&nbsp;&nbsp;&nbsp;(src/.../swagger.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#doesPathExist" title="src/utils/file-system.ts" ><b>doesPathExist</b>&nbsp;&nbsp;&nbsp;(src/.../file-system.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#formatStringForPath" title="src/utils/formatters.ts" ><b>formatStringForPath</b>&nbsp;&nbsp;&nbsp;(src/.../formatters.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#makeDir" title="src/utils/file-system.ts" ><b>makeDir</b>&nbsp;&nbsp;&nbsp;(src/.../file-system.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#readFile" title="src/utils/file-system.ts" ><b>readFile</b>&nbsp;&nbsp;&nbsp;(src/.../file-system.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#writeFile" title="src/utils/file-system.ts" ><b>writeFile</b>&nbsp;&nbsp;&nbsp;(src/.../file-system.ts)</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#create" >create</a>
+                            </li>
+                            <li>
+                                <a href="#find" >find</a>
+                            </li>
+                            <li>
+                                <a href="#index" >index</a>
+                            </li>
+                            <li>
+                                <a href="#remove" >remove</a>
+                            </li>
+                            <li>
+                                <a href="#update" >update</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
         </tbody>
     </table>
 </section>
 
-    <h3>src/main.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="bootstrap"></a>
-                    <span class="name">
-                        <span ><b>bootstrap</b></span>
-                        <a href="#bootstrap"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>bootstrap()</code>
-                </td>
-            </tr>
-
-
-
-
-        </tbody>
-    </table>
-</section>    <h3>src/swagger.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="createdocument"></a>
-                    <span class="name">
-                        <span ><b>createdocument</b></span>
-                        <a href="#createdocument"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>createdocument(app: INestApplication)</code>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>app</td>
-                                    <td>
-                                            <code>INestApplication</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>OpenAPIObject</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>    <h3>src/utils/file-system.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="doesPathExist"></a>
-                    <span class="name">
-                        <span ><b>doesPathExist</b></span>
-                        <a href="#doesPathExist"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>doesPathExist(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Description</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>path</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <ul>
-<li>The absolute path to be verified</li>
-</ul>
-
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;boolean&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        <p><code>true</code> or <code>false</code></p>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="makeDir"></a>
+                    <a name="create"></a>
                     <span class="name">
-                        <span ><b>makeDir</b></span>
-                        <a href="#makeDir"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>makeDir(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>create(files: <a href="../classes/UploadBookDto.html" target="_self">UploadBookDto</a>, createBookDto: <a href="../classes/CreateBookDto.html" target="_self">CreateBookDto</a>)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiBody({type: CreateBookDto})<br />@ApiCreatedResponse({description: &#x27;The record has been successfully created.&#x27;})<br />@ApiBadRequestResponse({description: &#x27;The record has failed validation.&#x27;})<br />@ApiConflictResponse({description: &#x27;The record has an internal conflict.&#x27;})<br />@ApiForbiddenResponse({description: &#x27;Forbidden!&#x27;})<br />@UseRoles(Role.PUBLISHER, Role.ADMIN, Role.SUPER_ADMIN)<br />@UseGuards(JwtAuthGuard, RolesGuard)<br />@UseInterceptors(undefined)<br />@Post(&#x27;create&#x27;)<br /></code>
+                </td>
+            </tr>
 
 
 
@@ -281,14 +146,13 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>path</td>
+                                    <td>files</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                <code><a href="../classes/UploadBookDto.html" target="_self" >UploadBookDto</a></code>
                                     </td>
 
                                     <td>
@@ -296,12 +160,18 @@
                                     </td>
 
 
+                                </tr>
+                                <tr>
+                                    <td>createBookDto</td>
                                     <td>
-                                        <ul>
-<li>The absolute path to where the directory will be created</li>
-</ul>
-
+                                                <code><a href="../classes/CreateBookDto.html" target="_self" >CreateBookDto</a></code>
                                     </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
                                 </tr>
                             </tbody>
                         </table>
@@ -309,7 +179,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;string | void&gt;</code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -323,19 +193,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="readFile"></a>
+                    <a name="find"></a>
                     <span class="name">
-                        <span ><b>readFile</b></span>
-                        <a href="#readFile"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>find</b></span>
+                        <a href="#find"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>readFile(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>find(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOkResponse({description: &#x27;The record has been successfully returned.&#x27;})<br />@ApiNotFoundResponse({description: &#x27;The record was not found.&#x27;})<br />@ApiForbiddenResponse({description: &#x27;Forbidden!&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, type: &#x27;String&#x27;, description: &#x27;Book id&#x27;})<br />@Get(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
 
 
 
@@ -351,12 +228,11 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>path</td>
+                                    <td>id</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
@@ -366,12 +242,6 @@
                                     </td>
 
 
-                                    <td>
-                                        <ul>
-<li>The absolute path to the file</li>
-</ul>
-
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -379,11 +249,48 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;Buffer | void&gt;</code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
-                        <p>A buffer of the file or <code>undefined</code> if no file found</p>
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="index"></a>
+                    <span class="name">
+                        <span ><b>index</b></span>
+                        <a href="#index"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>index()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOkResponse({description: &#x27;The record has been successfully returned.&#x27;})<br />@ApiNotFoundResponse({description: &#x27;The record was not found.&#x27;})<br />@ApiForbiddenResponse({description: &#x27;Forbidden!&#x27;})<br />@Get()<br /></code>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                 </td>
@@ -394,19 +301,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="writeFile"></a>
+                    <a name="remove"></a>
                     <span class="name">
-                        <span ><b>writeFile</b></span>
-                        <a href="#writeFile"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>remove</b></span>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>writeFile(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data: Buffer)</code>
+<code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOkResponse({description: &#x27;The record has been successfully returned.&#x27;})<br />@ApiNotFoundResponse({description: &#x27;The record was not found.&#x27;})<br />@ApiForbiddenResponse({description: &#x27;Forbidden!&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, type: &#x27;String&#x27;, description: &#x27;Book id&#x27;})<br />@UseRoles(Role.ADMIN, Role.SUPER_ADMIN)<br />@UseGuards(JwtAuthGuard, RolesGuard)<br />@Delete(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
 
 
 
@@ -422,12 +336,11 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>path</td>
+                                    <td>id</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
@@ -437,30 +350,6 @@
                                     </td>
 
 
-                                    <td>
-                                        <ul>
-<li>The absolute path to the file</li>
-</ul>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>data</td>
-                                    <td>
-                                            <code>Buffer</code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                    <td>
-                                        <ul>
-<li>A buffer containing your file data</li>
-</ul>
-
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -468,36 +357,40 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;Buffer | void&gt;</code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
-                        <p>A buffer of the file or <code>undefined</code> if no file found</p>
-
+                        
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-</section>    <h3>src/utils/formatters.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
+    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="formatStringForPath"></a>
+                    <a name="update"></a>
                     <span class="name">
-                        <span ><b>formatStringForPath</b></span>
-                        <a href="#formatStringForPath"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>formatStringForPath(rawName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateBookDto: <a href="../classes/UpdateBookDto.html" target="_self">UpdateBookDto</a>)</code>
                 </td>
             </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@ApiOkResponse({description: &#x27;The record has been successfully returned.&#x27;})<br />@ApiNotFoundResponse({description: &#x27;The record was not found.&#x27;})<br />@ApiForbiddenResponse({description: &#x27;Forbidden!&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, type: &#x27;String&#x27;, description: &#x27;Book id&#x27;})<br />@UseRoles(Role.ADMIN, Role.SUPER_ADMIN)<br />@UseGuards(JwtAuthGuard, RolesGuard)<br />@Patch(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
 
 
 
@@ -513,12 +406,11 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>rawName</td>
+                                    <td>id</td>
                                     <td>
                                                 <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
@@ -528,33 +420,51 @@
                                     </td>
 
 
+                                </tr>
+                                <tr>
+                                    <td>updateBookDto</td>
                                     <td>
-                                        <p>Book name</p>
-
+                                                <code><a href="../classes/UpdateBookDto.html" target="_self" >UpdateBookDto</a></code>
                                     </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div>
-                        <b>Example :</b>
-                        <div>
-                            <pre class="line-numbers"><code class="language-html">&lt;code&gt;My Book&lt;/code&gt; -&amp;gt; &lt;code&gt;my-book&lt;/code&gt;</code></pre>
-                        </div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
-                        <p>Formated book name</p>
-
+                        
                     </div>
                 </td>
             </tr>
         </tbody>
     </table>
-</section>
+</section>    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                    </div><div class="search-results">
@@ -573,8 +483,8 @@
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-functions';
-            var COMPODOC_CURRENT_PAGE_URL = 'functions.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
+            var COMPODOC_CURRENT_PAGE_URL = 'BookController.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

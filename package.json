@@ -33,7 +33,7 @@
     "cont:add": "all-contributors add",
     "cont:g": "all-contributors generate",
     "doc": "npx compodoc",
-    "doc:serve": "npm run doc && npx compodoc -s"
+    "doc:serve": "yarn doc && npx compodoc -s"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
