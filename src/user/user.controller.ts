@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
   UseGuards,
+  ClassSerializerInterceptor,
+  UseInterceptors,
 } from "@nestjs/common";
 import {
   ApiBadRequestResponse,
@@ -49,6 +51,7 @@ export class UserController {
   @ApiNotFoundResponse({ description: "The record was not found." })
   @ApiForbiddenResponse({ description: "Forbidden!" })
   @UseRoles(Role.ADMIN)
+  @UseInterceptors(ClassSerializerInterceptor)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Get()
   index() {
@@ -59,6 +62,7 @@ export class UserController {
   @ApiNotFoundResponse({ description: "The record was not found." })
   @ApiForbiddenResponse({ description: "Forbidden!" })
   @ApiParam({ name: "id", type: "String", description: "User id" })
+  @UseInterceptors(ClassSerializerInterceptor)
   @Get(":id")
   find(@Param("id") id: string) {
     return this.userService.show(id);
