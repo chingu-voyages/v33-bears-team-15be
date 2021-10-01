@@ -16,13 +16,6 @@ export class AuthService {
     private readonly configService: ConfigService
   ) {}
 
-  private signUser(id: string, role: RoleType) {
-    return this.jwtService.sign({
-      sub: id,
-      claim: role,
-    });
-  }
-
   private async storeUserRecord(email: string, hash: string, fullName: string) {
     const userRecord = await this.userRepository.create({
       email,
@@ -40,6 +33,22 @@ export class AuthService {
     return userRecordWithoutPassword;
   }
 
+  private signUser(id: string, role: RoleType) {
+    return this.jwtService.sign({
+      sub: id,
+      claim: role,
+    });
+  }
+
+  public googleLogin(req: any) {
+    if (!req.user) return "No user from google";
+
+    //TODO?: Save user in database
+    return {
+      message: "User information from google",
+      user: req.user,
+    };
+  }
   public async loginWithEmailAndPassword(r: AuthDto) {
     const userRecord = await this.userRepository.findOne({ email: r.email });
 

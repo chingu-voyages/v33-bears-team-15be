@@ -1,4 +1,5 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req, UseGuards } from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
 import {
   ApiBadRequestResponse,
   ApiBody,
@@ -9,6 +10,7 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from "@nestjs/swagger";
+
 import { AuthService } from "./auth.service";
 import { AuthDto } from "./dto/auth.dto";
 import { CreateUserDto } from "./dto/create-user.dto";
@@ -36,5 +38,22 @@ export class AuthController {
   @Post("signup")
   public async signUpWithEmailAndPassword(@Body() createUserDto: CreateUserDto) {
     return this.authService.signUpWithEmailAndPassword(createUserDto);
+  }
+
+  @Get("google")
+  @ApiBadRequestResponse({ description: "The record has failed validation." })
+  @ApiConflictResponse({ description: "The record has an internal conflict." })
+  @ApiForbiddenResponse({ description: "Forbidden!" })
+  @UseGuards(AuthGuard("google"))
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  async googleAuth() {}
+
+  @Get("google/redirect")
+  @ApiBadRequestResponse({ description: "The record has failed validation." })
+  @ApiConflictResponse({ description: "The record has an internal conflict." })
+  @ApiForbiddenResponse({ description: "Forbidden!" })
+  @UseGuards(AuthGuard("google"))
+  googleAuthRedirect(@Req() req: any) {
+    return this.authService.googleLogin(req);
   }
 }
