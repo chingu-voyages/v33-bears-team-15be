@@ -41,17 +41,11 @@ export class AuthController {
   }
 
   @Get("google")
-  @ApiBadRequestResponse({ description: "The record has failed validation." })
-  @ApiConflictResponse({ description: "The record has an internal conflict." })
-  @ApiForbiddenResponse({ description: "Forbidden!" })
   @UseGuards(AuthGuard("google"))
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  async googleAuth() {}
+  async googleAuth(@Req() _req: any) {}
 
   @Get("google/redirect")
-  @ApiBadRequestResponse({ description: "The record has failed validation." })
-  @ApiConflictResponse({ description: "The record has an internal conflict." })
-  @ApiForbiddenResponse({ description: "Forbidden!" })
   @UseGuards(AuthGuard("google"))
   googleAuthRedirect(@Req() req: any) {
     return this.authService.googleLogin(req);
