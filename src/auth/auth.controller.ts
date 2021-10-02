@@ -1,4 +1,10 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import {
+  Body,
+  ClassSerializerInterceptor,
+  Controller,
+  Post,
+  UseInterceptors,
+} from "@nestjs/common";
 import {
   ApiBadRequestResponse,
   ApiBody,
@@ -19,6 +25,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @ApiBody({ type: AuthDto })
+  @UseInterceptors(ClassSerializerInterceptor)
   @ApiOkResponse({ description: "The record has been successfully returned." })
   @ApiBadRequestResponse({ description: "The record has failed validation." })
   @ApiUnauthorizedResponse({ description: "Unauthorized action." })
@@ -29,6 +36,7 @@ export class AuthController {
   }
 
   @ApiBody({ type: CreateUserDto })
+  @UseInterceptors(ClassSerializerInterceptor)
   @ApiCreatedResponse({ description: "The record has been successfully created." })
   @ApiBadRequestResponse({ description: "The record has failed validation." })
   @ApiConflictResponse({ description: "The record has an internal conflict." })

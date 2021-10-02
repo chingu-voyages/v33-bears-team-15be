@@ -64,6 +64,11 @@ export class UserEntity extends BaseEntitySchema {
   // once it has been created => `wishList!: Book[]`
   @Prop({ type: [{ type: SchemaTypes.ObjectId, ref: "book" }] })
   public wishList!: string[];
+
+  constructor(partial: Partial<UserEntity>) {
+    super();
+    Object.assign(this, partial);
+  }
 }
 
 export const UserEntitySchema = SchemaFactory.createForClass(UserEntity);

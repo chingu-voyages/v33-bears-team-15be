@@ -56,7 +56,9 @@ export class AuthService {
       throw new UnauthorizedException("Incorrect email or password!");
     }
 
-    const { password, __v, ...userRecordWithoutPassword } = userRecord.toObject();
+    //TODO: Use nest Serialization
+    const { password, __v, firstLogin, lastLogin, ...userRecordWithoutPassword } =
+      userRecord.toObject();
 
     return {
       access_token: this.signUser(userRecord.id, userRecord.role),
@@ -77,11 +79,13 @@ export class AuthService {
 
     const hashedPassword = await argon2.hash(p + this.configService.authOptions.pepper);
 
-    const userRecord = await this.storeUserRecord(email, hashedPassword, fullName);
+    //TODO: Use nest Serialization
+    const { firstLogin, lastLogin, internalComment, ...extraData } =
+      await this.storeUserRecord(email, hashedPassword, fullName);
 
     return {
-      access_token: this.signUser(userRecord._id, userRecord.role),
-      user: userRecord,
+      access_token: this.signUser(extraData._id, extraData.role),
+      user: extraData,
     };
   }
 }
