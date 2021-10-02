@@ -119,7 +119,8 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://chirila.dev/"><img src="https://avatars.githubusercontent.com/u/31253154?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrei Chirila</b></sub></a><br /><a href="https://github.com/v33-bears-team-15/dekoo/commits?author=Kerosz" title="Code">💻</a></td>
+    <td align="center"><a href="https://chirila.dev/"><img src="https://avatars.githubusercontent.com/u/31253154?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Andrei Chirila</b></sub></a><br /><a href="https://github.com/chingu-voyages/v33-bears-team-15be/commits?author=Kerosz" title="Code">💻</a></td>
+    <td align="center"><a href="https://ducassedev.netlify.app/"><img src="https://avatars.githubusercontent.com/u/66644638?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arturo Ducasse</b></sub></a><br /><a href="https://github.com/chingu-voyages/v33-bears-team-15be/commits?author=ArturoDucasse" title="Code">💻</a></td>
   </tr>
 </table>
 
