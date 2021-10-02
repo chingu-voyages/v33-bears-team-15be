@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Post, Req, UseGuards } from "@nestjs/common";
-import { AuthGuard } from "@nestjs/passport";
 import {
   ApiBadRequestResponse,
   ApiBody,
@@ -10,10 +9,13 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from "@nestjs/swagger";
+import { Request } from "express";
+import { Profile } from "passport-google-oauth20";
 
 import { AuthService } from "./auth.service";
 import { AuthDto } from "./dto/auth.dto";
 import { CreateUserDto } from "./dto/create-user.dto";
+import { GoogleAuthGuard } from "./guards/google.guard";
 
 @ApiTags("auth")
 @Controller({ version: "1", path: "auth" })
@@ -41,13 +43,14 @@ export class AuthController {
   }
 
   @Get("google")
-  @UseGuards(AuthGuard("google"))
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  async googleAuth(@Req() _req: any) {}
+  @UseGuards(GoogleAuthGuard)
+  async googleAuth(@Req() _req: Request) {
+    return;
+  }
 
   @Get("google/redirect")
-  @UseGuards(AuthGuard("google"))
-  googleAuthRedirect(@Req() req: any) {
-    return this.authService.googleLogin(req);
+  @UseGuards(GoogleAuthGuard)
+  googleAuthRedirect(@Req() req: Request) {
+    return this.authService.loginWithGoogleProvider(req.user as Profile);
   }
 }

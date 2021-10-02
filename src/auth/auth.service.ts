@@ -7,6 +7,7 @@ import { UserRepository } from "@/user/models/user.repository";
 import { Role, RoleType } from "./role.enum";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { AuthDto } from "./dto/auth.dto";
+import { Profile } from "passport-google-oauth20";
 
 @Injectable()
 export class AuthService {
@@ -16,7 +17,7 @@ export class AuthService {
     private readonly configService: ConfigService
   ) {}
 
-  private async storeUserRecord(email: string, hash: string, fullName: string) {
+  private async storeUserRecordWithHash(email: string, hash: string, fullName: string) {
     const userRecord = await this.userRepository.create({
       email,
       password: hash,
@@ -33,22 +34,50 @@ export class AuthService {
     return userRecordWithoutPassword;
   }
 
-  private signUser(id: string, role: RoleType) {
+  private signUserToken(id: string, role: RoleType) {
     return this.jwtService.sign({
       sub: id,
       claim: role,
     });
   }
 
-  public googleLogin(req: any) {
-    if (!req.user) return "No user from google";
+  public async loginWithGoogleProvider({
+    emails,
+    name,
+    username,
+    id,
+    provider,
+    photos,
+  }: Profile) {
+    let userRecord = await this.userRepository.findOne({
+      email: emails?.[0].value,
+    });
 
-    //TODO?: Save user in database
+    if (!userRecord) {
+      userRecord = await this.userRepository.create({
+        provider,
+        providerId: id,
+        email: emails?.[0].value,
+        password: id,
+        fullName: `${name?.familyName} ${name?.givenName}`,
+        username,
+        avatar: photos?.[0].value,
+        role: Role.READER,
+        firstLogin: new Date(Date.now()),
+        lastLogin: new Date(Date.now()),
+        readingList: [],
+        wishList: [],
+      });
+    }
+
+    const { password, __v, ...userRecordWithoutPassword } = userRecord.toObject();
+
     return {
-      message: "User information from google",
-      user: req.user,
+      access_token: this.signUserToken(userRecord.id, userRecord.role),
+      user: userRecordWithoutPassword,
     };
   }
+
   public async loginWithEmailAndPassword(r: AuthDto) {
     const userRecord = await this.userRepository.findOne({ email: r.email });
 
@@ -68,7 +97,7 @@ export class AuthService {
     const { password, __v, ...userRecordWithoutPassword } = userRecord.toObject();
 
     return {
-      access_token: this.signUser(userRecord.id, userRecord.role),
+      access_token: this.signUserToken(userRecord.id, userRecord.role),
       user: userRecordWithoutPassword,
     };
   }
@@ -86,10 +115,14 @@ export class AuthService {
 
     const hashedPassword = await argon2.hash(p + this.configService.authOptions.pepper);
 
-    const userRecord = await this.storeUserRecord(email, hashedPassword, fullName);
+    const userRecord = await this.storeUserRecordWithHash(
+      email,
+      hashedPassword,
+      fullName
+    );
 
     return {
-      access_token: this.signUser(userRecord._id, userRecord.role),
+      access_token: this.signUserToken(userRecord._id, userRecord.role),
       user: userRecord,
     };
   }

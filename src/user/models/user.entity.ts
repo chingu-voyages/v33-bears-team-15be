@@ -23,6 +23,12 @@ export class UserEntity extends BaseEntitySchema {
   })
   public username!: string | null;
 
+  @Prop({ default: "local", lowercase: true, trim: true })
+  public provider!: string;
+
+  @Prop({ type: String, default: null, trim: true })
+  public providerId!: string | null;
+
   @Prop({ required: true, trim: true })
   public password!: string;
 
