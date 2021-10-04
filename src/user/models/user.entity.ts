@@ -1,4 +1,3 @@
-import { Exclude } from "class-transformer";
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, SchemaTypes } from "mongoose";
 
@@ -52,15 +51,12 @@ export class UserEntity extends BaseEntitySchema {
   public role!: RoleType;
 
   @Prop({ type: String, default: null })
-  @Exclude()
   public internalComment!: string | null;
 
   @Prop({ required: true })
-  @Exclude()
   public firstLogin!: Date;
 
   @Prop({ required: true })
-  @Exclude()
   public lastLogin!: Date;
 
   @Prop([CreateReadingListDto])
