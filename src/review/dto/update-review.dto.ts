@@ -8,9 +8,4 @@ export class UpdateReviewDto extends PartialType(CreateReviewDto) {
   @IsString({ message: "Review must be of type string(ObjectId)!" })
   @IsOptional()
   helpful?: string[];
-
-  @ApiProperty({ description: "Review total count", required: false })
-  @IsString({ message: "Review must be of type String!" })
-  @IsOptional()
-  countHelpful?: string;
 }
