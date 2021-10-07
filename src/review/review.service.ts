@@ -18,18 +18,23 @@ export class ReviewService {
     private readonly bookRepository: BookRepository
   ) {}
 
-  async create(_userId: string, _bookId: string, r: CreateReviewDto) {
+  async create(_userId: string, bookId: string, r: CreateReviewDto) {
     //Todo?: User can only create one review per book
     //Todo?: User can't comment to its own book
 
-    const newTotalReview = await this.bookRepository.findById(_bookId);
-    let counter = newTotalReview?.totalReviews || 0;
+    const bookRecord = await this.bookRepository.findById(bookId);
 
-    await this.bookRepository.findByIdAndUpdate(_bookId, {
-      totalReviews: counter++,
-    });
+    if (!bookRecord)
+      throw new NotFoundException(
+        "The book you are trying to add the review for doesn't exist!"
+      );
 
     const newReviewRecord = await this.reviewRepository.create({ ...r, user: _userId });
+
+    await this.bookRepository.findByIdAndUpdate(bookId, {
+      totalReviews: bookRecord.totalReviews++,
+      reviews: [...bookRecord.reviews, newReviewRecord._id],
+    });
 
     Logger.log(`Create new review: ${newReviewRecord}`, ReviewService.name);
 
