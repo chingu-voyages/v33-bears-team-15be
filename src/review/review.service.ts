@@ -55,6 +55,13 @@ export class ReviewService {
     return reviewRecord;
   }
 
+  async findAllBookReviews(bookId: string) {
+    const bookRecord = await this.bookRepository.findById(bookId);
+    if (!bookRecord) throw new NotFoundException("No book record found!");
+
+    return bookRecord.reviews;
+  }
+
   async updateReview(userId: string, reviewId: string, updateReviewDto: UpdateReviewDto) {
     const reviewRecord = await this.reviewRepository.findById(reviewId);
 
@@ -72,7 +79,6 @@ export class ReviewService {
   async updateHelpful(userId: string, reviewId: string) {
     const reviewRecord = await this.reviewRepository.findById(reviewId);
     if (!reviewRecord) throw new NotFoundException("No Review record found!");
-    //Todo?: Users need to be authenticated to count as helpful
 
     if (reviewRecord.helpful.find((id) => id === userId)) {
       const filteredArray = reviewRecord.helpful.filter((id) => id !== userId);
