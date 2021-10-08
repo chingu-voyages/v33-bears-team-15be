@@ -1,5 +1,4 @@
 import { BookRepository } from "./../book/models/book.repository";
-import { UserRepository } from "@/user/models/user.repository";
 import {
   Injectable,
   Logger,
@@ -18,7 +17,7 @@ export class ReviewService {
     private readonly bookRepository: BookRepository
   ) {}
 
-  async create(_userId: string, bookId: string, r: CreateReviewDto) {
+  async create(userId: string, bookId: string, r: CreateReviewDto) {
     //Todo?: User can only create one review per book
     //Todo?: User can't comment to its own book
 
@@ -29,7 +28,7 @@ export class ReviewService {
         "The book you are trying to add the review for doesn't exist!"
       );
 
-    const newReviewRecord = await this.reviewRepository.create({ ...r, user: _userId });
+    const newReviewRecord = await this.reviewRepository.create({ ...r, user: userId });
 
     await this.bookRepository.findByIdAndUpdate(bookId, {
       totalReviews: bookRecord.totalReviews++,
@@ -56,29 +55,53 @@ export class ReviewService {
     return reviewRecord;
   }
 
-  async update(userId: string, reviewId: string, updateReviewDto: UpdateReviewDto) {
+  async updateReview(userId: string, reviewId: string, updateReviewDto: UpdateReviewDto) {
     const reviewRecord = await this.reviewRepository.findById(reviewId);
 
     if (!reviewRecord) throw new NotFoundException("No user record found!");
 
-    if (reviewRecord.user !== userId) throw new UnauthorizedException("Incorrect user!");
-
+    if (reviewRecord.user !== userId)
+      throw new UnauthorizedException("This review doesn't belong to you!");
     const updateReviewObject = {
-      helpful: updateReviewDto.helpful || reviewRecord.helpful,
+      comment: updateReviewDto.comment,
     };
 
     return this.reviewRepository.findByIdAndUpdate(reviewId, updateReviewObject);
   }
 
-  async remove(userId: string, reviewId: string) {
+  async updateHelpful(userId: string, reviewId: string) {
     const reviewRecord = await this.reviewRepository.findById(reviewId);
+    if (!reviewRecord) throw new NotFoundException("No Review record found!");
+    //Todo?: Users need to be authenticated to count as helpful
+
+    if (reviewRecord.helpful.find((id) => id === userId)) {
+      const filteredArray = reviewRecord.helpful.filter((id) => id !== userId);
+      return await this.reviewRepository.findByIdAndUpdate(reviewId, {
+        helpful: filteredArray,
+        countHelpFul: reviewRecord.countHelpFul--,
+      });
+    }
+
+    return await this.reviewRepository.findByIdAndUpdate(reviewId, {
+      helpful: [...reviewRecord.helpful, userId],
+      countHelpFul: reviewRecord.countHelpFul++,
+    });
+  }
+
+  async remove(userId: string, reviewId: string, bookId: string) {
+    const reviewRecord = await this.reviewRepository.findById(reviewId);
+    const bookRecord = await this.bookRepository.findById(bookId);
 
     if (!reviewRecord) throw new NotFoundException("No review record found!");
+    if (!bookRecord) throw new NotFoundException("This review book cannot be found!");
     if (reviewRecord.user !== userId)
       throw new UnauthorizedException("This review doesn't belong to you!");
 
     return {
       deleted: await this.reviewRepository.deleteOne({ _id: reviewId }),
+      bookReviewCount: await this.bookRepository.findByIdAndUpdate(bookId, {
+        totalReviews: bookRecord.totalReviews--,
+      }),
     };
   }
 }

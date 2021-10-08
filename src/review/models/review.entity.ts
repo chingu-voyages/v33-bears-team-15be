@@ -16,10 +16,10 @@ export class ReviewEntity extends BaseEntitySchema {
   @Prop({ required: true, type: SchemaTypes.ObjectId })
   user!: string;
 
-  @Prop({ required: true, type: SchemaTypes.ObjectId, default: 0 })
+  @Prop({ required: true, type: SchemaTypes.ObjectId })
   helpful!: string[];
 
-  @Prop({ required: true })
+  @Prop({ required: true, default: 0 })
   countHelpFul!: number;
 
   @Prop({ required: true, enum: Object.values(Role), default: Role.READER })

@@ -32,13 +32,18 @@ export class ReviewController {
     return this.reviewService.findOne(id);
   }
 
-  @Patch(":userId/update/:reviewId")
-  update(
+  @Patch(":userId/update-review/:reviewId")
+  updateReview(
     @Param("userId") userId: string,
     @Param("reviewId") reviewId: string,
     @Body() updateReviewDto: UpdateReviewDto
   ) {
-    return this.reviewService.update(userId, reviewId, updateReviewDto);
+    return this.reviewService.updateReview(userId, reviewId, updateReviewDto);
+  }
+
+  @Patch(":userId/update-helpful/:reviewId")
+  updateHelpful(@Param("userId") userId: string, @Param("reviewId") reviewId: string) {
+    return this.reviewService.updateHelpful(userId, reviewId);
   }
 
   @Delete(":userId/delete/:reviewId")
