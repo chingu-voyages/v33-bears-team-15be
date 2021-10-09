@@ -14,7 +14,7 @@ import { createdocument } from "./swagger";
 const LOG_LABEL = "BOOTSTRAP";
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, { cors: true });
 
   // Env config
   const { prefix, env, port, hostname, cors, swagger } =
