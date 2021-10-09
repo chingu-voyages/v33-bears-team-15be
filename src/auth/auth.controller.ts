@@ -36,7 +36,7 @@ export class AuthController {
   @ApiOkResponse({ description: "The record has been successfully returned." })
   @ApiBadRequestResponse({ description: "The record has failed validation." })
   @ApiUnauthorizedResponse({ description: "Unauthorized action, only for admins." })
-  @ApiForbiddenResponse({ description: "Forbidden!" })
+  @ApiForbiddenResponse({ description: "Forbidden, only for admins!" })
   @Post("signin-admin")
   public async adminLogin(@Body() authDto: AuthDto) {
     return this.authService.adminLogin(authDto);
