@@ -137,6 +137,7 @@ export class AuthService {
     email,
     password: p,
     fullName,
+    username,
   }: CreateUserDto) {
     const isEmailTaken = await this.userRepository.findOne({ email });
 
@@ -149,7 +150,8 @@ export class AuthService {
     const userRecord = await this.storeUserRecordWithHash(
       email,
       hashedPassword,
-      fullName
+      fullName,
+      username
     );
 
     return {
