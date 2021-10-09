@@ -1,6 +1,11 @@
 import * as argon2 from "argon2";
 import { JwtService } from "@nestjs/jwt";
-import { ConflictException, Injectable, UnauthorizedException } from "@nestjs/common";
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from "@nestjs/common";
 
 import { ConfigService } from "@/config/config.service";
 import { UserRepository } from "@/user/models/user.repository";
@@ -84,6 +89,32 @@ export class AuthService {
     if (!userRecord) {
       throw new UnauthorizedException("Incorrect email or password!");
     }
+
+    const isPasswordValid = await argon2.verify(
+      userRecord.password,
+      r.password + this.configService.authOptions.pepper
+    );
+
+    if (!isPasswordValid) {
+      throw new UnauthorizedException("Incorrect email or password!");
+    }
+
+    const { password, __v, ...userRecordWithoutPassword } = userRecord.toObject();
+
+    return {
+      access_token: this.signUserToken(userRecord.id, userRecord.role),
+      user: userRecordWithoutPassword,
+    };
+  }
+
+  public async adminLogin(r: AuthDto) {
+    const userRecord = await this.userRepository.findOne({ email: r.email });
+    if (!userRecord) throw new NotFoundException("Record not found!");
+
+    const userRole = (): string => userRecord.role;
+
+    if (userRole() !== Role.SUPER_ADMIN || userRole() !== Role.ADMIN)
+      throw new UnauthorizedException("You are not an admin!");
 
     const isPasswordValid = await argon2.verify(
       userRecord.password,
