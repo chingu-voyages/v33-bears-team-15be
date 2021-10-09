@@ -120,7 +120,9 @@ export class AuthService {
     const userRole = (): string => userRecord.role;
 
     if (userRole() !== Role.SUPER_ADMIN || userRole() !== Role.ADMIN)
-      throw new UnauthorizedException("You are not an admin!");
+      throw new UnauthorizedException(
+        "You shall not pass! account level not authorized to access this resource!"
+      );
 
     const isPasswordValid = await argon2.verify(
       userRecord.password,
