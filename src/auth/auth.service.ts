@@ -22,9 +22,15 @@ export class AuthService {
     private readonly configService: ConfigService
   ) {}
 
-  private async storeUserRecordWithHash(email: string, hash: string, fullName: string) {
+  private async storeUserRecordWithHash(
+    email: string,
+    hash: string,
+    fullName: string,
+    username: string
+  ) {
     const userRecord = await this.userRepository.create({
       email,
+      username,
       password: hash,
       fullName,
       role: Role.READER,
