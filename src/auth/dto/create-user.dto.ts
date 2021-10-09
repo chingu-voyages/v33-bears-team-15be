@@ -22,4 +22,10 @@ export class CreateUserDto {
   @MinLength(4, { message: "Name must be at least 4 characters!" })
   @MaxLength(26, { message: "Name must be at most 26 characters!" })
   fullName!: string;
+
+  @ApiProperty({ type: "String", description: "User name" })
+  @IsDefined({ message: "Username must be provided!" })
+  @MinLength(3, { message: "Usernames must have at least 3 characters!" })
+  @MaxLength(12, { message: "Usernames must be at most 12 characters!" })
+  username!: string;
 }

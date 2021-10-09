@@ -1,6 +1,11 @@
 import * as argon2 from "argon2";
 import { JwtService } from "@nestjs/jwt";
-import { ConflictException, Injectable, UnauthorizedException } from "@nestjs/common";
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from "@nestjs/common";
 
 import { ConfigService } from "@/config/config.service";
 import { UserRepository } from "@/user/models/user.repository";
@@ -17,9 +22,15 @@ export class AuthService {
     private readonly configService: ConfigService
   ) {}
 
-  private async storeUserRecordWithHash(email: string, hash: string, fullName: string) {
+  private async storeUserRecordWithHash(
+    email: string,
+    hash: string,
+    fullName: string,
+    username: string
+  ) {
     const userRecord = await this.userRepository.create({
       email,
+      username,
       password: hash,
       fullName,
       role: Role.READER,
@@ -102,10 +113,39 @@ export class AuthService {
     };
   }
 
+  public async adminLogin(r: AuthDto) {
+    const userRecord = await this.userRepository.findOne({ email: r.email });
+    if (!userRecord) throw new NotFoundException("Record not found!");
+
+    const userRole = (): string => userRecord.role;
+
+    if (userRole() !== Role.SUPER_ADMIN || userRole() !== Role.ADMIN)
+      throw new UnauthorizedException(
+        "You shall not pass! account level not authorized to access this resource!"
+      );
+
+    const isPasswordValid = await argon2.verify(
+      userRecord.password,
+      r.password + this.configService.authOptions.pepper
+    );
+
+    if (!isPasswordValid) {
+      throw new UnauthorizedException("Incorrect email or password!");
+    }
+
+    const { password, __v, ...userRecordWithoutPassword } = userRecord.toObject();
+
+    return {
+      access_token: this.signUserToken(userRecord.id, userRecord.role),
+      user: userRecordWithoutPassword,
+    };
+  }
+
   public async signUpWithEmailAndPassword({
     email,
     password: p,
     fullName,
+    username,
   }: CreateUserDto) {
     const isEmailTaken = await this.userRepository.findOne({ email });
 
@@ -118,7 +158,8 @@ export class AuthService {
     const userRecord = await this.storeUserRecordWithHash(
       email,
       hashedPassword,
-      fullName
+      fullName,
+      username
     );
 
     return {
