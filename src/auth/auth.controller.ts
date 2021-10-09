@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req, UseGuards } from "@nestjs/common";
 import {
   ApiBadRequestResponse,
   ApiBody,
@@ -9,9 +9,13 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from "@nestjs/swagger";
+import { Request } from "express";
+import { Profile } from "passport-google-oauth20";
+
 import { AuthService } from "./auth.service";
 import { AuthDto } from "./dto/auth.dto";
 import { CreateUserDto } from "./dto/create-user.dto";
+import { GoogleAuthGuard } from "./guards/google.guard";
 
 @ApiTags("auth")
 @Controller({ version: "1", path: "auth" })
@@ -36,5 +40,17 @@ export class AuthController {
   @Post("signup")
   public async signUpWithEmailAndPassword(@Body() createUserDto: CreateUserDto) {
     return this.authService.signUpWithEmailAndPassword(createUserDto);
+  }
+
+  @Get("google")
+  @UseGuards(GoogleAuthGuard)
+  async googleAuth(@Req() _req: Request) {
+    return;
+  }
+
+  @Get("google/redirect")
+  @UseGuards(GoogleAuthGuard)
+  googleAuthRedirect(@Req() req: Request) {
+    return this.authService.loginWithGoogleProvider(req.user as Profile);
   }
 }

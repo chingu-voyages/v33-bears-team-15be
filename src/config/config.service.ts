@@ -56,6 +56,8 @@ export class ConfigService {
       TOKEN_DURATION: str({ default: "7d" }),
       SUPERADMIN_PASSWORD: str({ devDefault: "superpassword" }),
       AUTH_PEPPER: str(),
+      GOOGLE_CLIENT_ID: str(),
+      GOOGLE_CLIENT_SECRET: str(),
       //
       SWAGGER_TITLE: str({ default: "Dekoo API Documentation" }),
       SWAGGER_DESCRIPTION: str({
@@ -97,6 +99,8 @@ export class ConfigService {
         superadminCredentials: { password: envConfig.SUPERADMIN_PASSWORD },
         jwtSecretKey: envConfig.JWT_SECRET_KEY,
         pepper: envConfig.AUTH_PEPPER,
+        googleClientId: envConfig.GOOGLE_CLIENT_ID,
+        googleClientSecret: envConfig.GOOGLE_CLIENT_SECRET,
       },
       dbOptions: {
         connectionUri: envConfig.DB_URI,

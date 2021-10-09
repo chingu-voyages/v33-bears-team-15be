@@ -1,6 +1,6 @@
 {
-  "projectName": "dekoo",
-  "projectOwner": "v33-bears-team-15",
+  "projectName": "v33-bears-team-15be",
+  "projectOwner": "chingu-voyages",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
@@ -18,7 +18,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ArturoDucasse",
+      "name": "Arturo Ducasse",
+      "avatar_url": "https://avatars.githubusercontent.com/u/66644638?v=4",
+      "profile": "https://ducassedev.netlify.app/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }

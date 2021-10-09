@@ -87,6 +87,16 @@ export interface AuthOptions {
    * Extra security layer for hashing passwords
    */
   pepper?: string;
+  /**
+   * @description
+   * Client `ID` for google web application
+   */
+  googleClientId?: string;
+  /**
+   * @description
+   * Client `Secret` for google web application
+   */
+  googleClientSecret?: string;
 }
 
 export interface SuperadminCredentials {

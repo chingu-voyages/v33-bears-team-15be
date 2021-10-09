@@ -9,6 +9,7 @@ import { AuthService } from "./auth.service";
 import { UserRepository } from "@/user/models/user.repository";
 import { JwtStrategy } from "./strategies/jwt.strategy";
 import { UserEntity, UserEntitySchema } from "@/user/models/user.entity";
+import { GoogleStrategy } from "./strategies/google.strategy";
 
 @Module({
   imports: [
@@ -24,7 +25,7 @@ import { UserEntity, UserEntitySchema } from "@/user/models/user.entity";
     }),
     MongooseModule.forFeature([{ name: UserEntity.name, schema: UserEntitySchema }]),
   ],
-  providers: [AuthService, UserRepository, ConfigService, JwtStrategy],
+  providers: [AuthService, UserRepository, ConfigService, JwtStrategy, GoogleStrategy],
   controllers: [AuthController],
   exports: [AuthService],
 })
