@@ -1,398 +1,60 @@
-"use strict";
+'use strict';
 
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj &&
-        typeof Symbol === "function" &&
-        obj.constructor === Symbol &&
-        obj !== Symbol.prototype
-        ? "symbol"
-        : typeof obj;
-    };
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+customElements.define('compodoc-menu', /*#__PURE__*/function (_HTMLElement) {
+  _inherits(_class, _HTMLElement);
+
+  var _super = _createSuper(_class);
+
+  function _class() {
+    var _this;
+
+    _classCallCheck(this, _class);
+
+    _this = _super.call(this);
+    _this.isNormalMode = _this.getAttribute('mode') === 'normal';
+    return _this;
   }
-  return _typeof(obj);
-}
 
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: { value: subClass, writable: true, configurable: true },
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-      result;
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
+  _createClass(_class, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      this.render(this.isNormalMode);
     }
-    return _possibleConstructorReturn(this, result);
-  };
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  } else if (call !== void 0) {
-    throw new TypeError("Derived constructors may only return object or undefined");
-  }
-  return _assertThisInitialized(self);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-
-function _wrapNativeSuper(Class) {
-  var _cache = typeof Map === "function" ? new Map() : undefined;
-  _wrapNativeSuper = function _wrapNativeSuper(Class) {
-    if (Class === null || !_isNativeFunction(Class)) return Class;
-    if (typeof Class !== "function") {
-      throw new TypeError("Super expression must either be null or a function");
+  }, {
+    key: "render",
+    value: function render(isNormalMode) {
+      var tp = lithtml.html("\n        <nav>\n            <ul class=\"list\">\n                <li class=\"title\">\n                    <a href=\"index.html\" data-type=\"index-link\">\n                        <img alt=\"\" class=\"img-responsive\" data-type=\"custom-logo\" src=images/logo.png>\n                    </a>\n                </li>\n\n                <li class=\"divider\"></li>\n                ".concat(isNormalMode ? "<div id=\"book-search-input\" role=\"search\"><input type=\"text\" placeholder=\"Type to search\"></div>" : '', "\n                <li class=\"chapter\">\n                    <a data-type=\"chapter-link\" href=\"index.html\"><span class=\"icon ion-ios-home\"></span>Getting started</a>\n                    <ul class=\"links\">\n                        <li class=\"link\">\n                            <a href=\"overview.html\" data-type=\"chapter-link\">\n                                <span class=\"icon ion-ios-keypad\"></span>Overview\n                            </a>\n                        </li>\n                        <li class=\"link\">\n                            <a href=\"index.html\" data-type=\"chapter-link\">\n                                <span class=\"icon ion-ios-paper\"></span>README\n                            </a>\n                        </li>\n                        <li class=\"link\">\n                            <a href=\"contributing.html\"  data-type=\"chapter-link\">\n                                <span class=\"icon ion-ios-paper\"></span>CONTRIBUTING\n                            </a>\n                        </li>\n                        <li class=\"link\">\n                            <a href=\"license.html\"  data-type=\"chapter-link\">\n                                <span class=\"icon ion-ios-paper\"></span>LICENSE\n                            </a>\n                        </li>\n                                <li class=\"link\">\n                                    <a href=\"dependencies.html\" data-type=\"chapter-link\">\n                                        <span class=\"icon ion-ios-list\"></span>Dependencies\n                                    </a>\n                                </li>\n                    </ul>\n                </li>\n                    <li class=\"chapter modules\">\n                        <a data-type=\"chapter-link\" href=\"modules.html\">\n                            <div class=\"menu-toggler linked\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#modules-links"' : 'data-target="#xs-modules-links"', ">\n                                <span class=\"icon ion-ios-archive\"></span>\n                                <span class=\"link-name\">Modules</span>\n                                <span class=\"icon ion-ios-arrow-down\"></span>\n                            </div>\n                        </a>\n                        <ul class=\"links collapse \" ").concat(isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"', ">\n                            <li class=\"link\">\n                                <a href=\"modules/AppModule.html\" data-type=\"entity-link\" >AppModule</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"modules/AuthModule.html\" data-type=\"entity-link\" >AuthModule</a>\n                                    <li class=\"chapter inner\">\n                                        <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#controllers-links-module-AuthModule-c664e05d533ebc03a44ec6de41ca61d8"' : 'data-target="#xs-controllers-links-module-AuthModule-c664e05d533ebc03a44ec6de41ca61d8"', ">\n                                            <span class=\"icon ion-md-swap\"></span>\n                                            <span>Controllers</span>\n                                            <span class=\"icon ion-ios-arrow-down\"></span>\n                                        </div>\n                                        <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="controllers-links-module-AuthModule-c664e05d533ebc03a44ec6de41ca61d8"' : 'id="xs-controllers-links-module-AuthModule-c664e05d533ebc03a44ec6de41ca61d8"', ">\n                                            <li class=\"link\">\n                                                <a href=\"controllers/AuthController.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >AuthController</a>\n                                            </li>\n                                        </ul>\n                                    </li>\n                                <li class=\"chapter inner\">\n                                    <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#injectables-links-module-AuthModule-c664e05d533ebc03a44ec6de41ca61d8"' : 'data-target="#xs-injectables-links-module-AuthModule-c664e05d533ebc03a44ec6de41ca61d8"', ">\n                                        <span class=\"icon ion-md-arrow-round-down\"></span>\n                                        <span>Injectables</span>\n                                        <span class=\"icon ion-ios-arrow-down\"></span>\n                                    </div>\n                                    <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="injectables-links-module-AuthModule-c664e05d533ebc03a44ec6de41ca61d8"' : 'id="xs-injectables-links-module-AuthModule-c664e05d533ebc03a44ec6de41ca61d8"', ">\n                                        <li class=\"link\">\n                                            <a href=\"injectables/AuthService.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >AuthService</a>\n                                        </li>\n                                        <li class=\"link\">\n                                            <a href=\"injectables/GoogleStrategy.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >GoogleStrategy</a>\n                                        </li>\n                                        <li class=\"link\">\n                                            <a href=\"injectables/JwtStrategy.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >JwtStrategy</a>\n                                        </li>\n                                        <li class=\"link\">\n                                            <a href=\"injectables/UserRepository.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >UserRepository</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"modules/AuthorModule.html\" data-type=\"entity-link\" >AuthorModule</a>\n                                    <li class=\"chapter inner\">\n                                        <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"' : 'data-target="#xs-controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"', ">\n                                            <span class=\"icon ion-md-swap\"></span>\n                                            <span>Controllers</span>\n                                            <span class=\"icon ion-ios-arrow-down\"></span>\n                                        </div>\n                                        <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"' : 'id="xs-controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"', ">\n                                            <li class=\"link\">\n                                                <a href=\"controllers/AuthorController.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >AuthorController</a>\n                                            </li>\n                                        </ul>\n                                    </li>\n                                <li class=\"chapter inner\">\n                                    <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"' : 'data-target="#xs-injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"', ">\n                                        <span class=\"icon ion-md-arrow-round-down\"></span>\n                                        <span>Injectables</span>\n                                        <span class=\"icon ion-ios-arrow-down\"></span>\n                                    </div>\n                                    <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"' : 'id="xs-injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"', ">\n                                        <li class=\"link\">\n                                            <a href=\"injectables/AuthorRepository.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >AuthorRepository</a>\n                                        </li>\n                                        <li class=\"link\">\n                                            <a href=\"injectables/AuthorService.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >AuthorService</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"modules/BookModule.html\" data-type=\"entity-link\" >BookModule</a>\n                                    <li class=\"chapter inner\">\n                                        <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"' : 'data-target="#xs-controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"', ">\n                                            <span class=\"icon ion-md-swap\"></span>\n                                            <span>Controllers</span>\n                                            <span class=\"icon ion-ios-arrow-down\"></span>\n                                        </div>\n                                        <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"' : 'id="xs-controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"', ">\n                                            <li class=\"link\">\n                                                <a href=\"controllers/BookController.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >BookController</a>\n                                            </li>\n                                        </ul>\n                                    </li>\n                                <li class=\"chapter inner\">\n                                    <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"' : 'data-target="#xs-injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"', ">\n                                        <span class=\"icon ion-md-arrow-round-down\"></span>\n                                        <span>Injectables</span>\n                                        <span class=\"icon ion-ios-arrow-down\"></span>\n                                    </div>\n                                    <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"' : 'id="xs-injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"', ">\n                                        <li class=\"link\">\n                                            <a href=\"injectables/BookRepository.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >BookRepository</a>\n                                        </li>\n                                        <li class=\"link\">\n                                            <a href=\"injectables/BookService.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >BookService</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"modules/CategoryModule.html\" data-type=\"entity-link\" >CategoryModule</a>\n                                    <li class=\"chapter inner\">\n                                        <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"' : 'data-target="#xs-controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"', ">\n                                            <span class=\"icon ion-md-swap\"></span>\n                                            <span>Controllers</span>\n                                            <span class=\"icon ion-ios-arrow-down\"></span>\n                                        </div>\n                                        <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"' : 'id="xs-controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"', ">\n                                            <li class=\"link\">\n                                                <a href=\"controllers/CategoryController.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >CategoryController</a>\n                                            </li>\n                                        </ul>\n                                    </li>\n                                <li class=\"chapter inner\">\n                                    <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"' : 'data-target="#xs-injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"', ">\n                                        <span class=\"icon ion-md-arrow-round-down\"></span>\n                                        <span>Injectables</span>\n                                        <span class=\"icon ion-ios-arrow-down\"></span>\n                                    </div>\n                                    <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"' : 'id="xs-injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"', ">\n                                        <li class=\"link\">\n                                            <a href=\"injectables/CategoryRepository.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >CategoryRepository</a>\n                                        </li>\n                                        <li class=\"link\">\n                                            <a href=\"injectables/CategoryService.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >CategoryService</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"modules/ConfigModule.html\" data-type=\"entity-link\" >ConfigModule</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"modules/DatabaseModule.html\" data-type=\"entity-link\" >DatabaseModule</a>\n                                <li class=\"chapter inner\">\n                                    <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#injectables-links-module-DatabaseModule-35f284afa0d2276d2c58086c9abd05b3"' : 'data-target="#xs-injectables-links-module-DatabaseModule-35f284afa0d2276d2c58086c9abd05b3"', ">\n                                        <span class=\"icon ion-md-arrow-round-down\"></span>\n                                        <span>Injectables</span>\n                                        <span class=\"icon ion-ios-arrow-down\"></span>\n                                    </div>\n                                    <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="injectables-links-module-DatabaseModule-35f284afa0d2276d2c58086c9abd05b3"' : 'id="xs-injectables-links-module-DatabaseModule-35f284afa0d2276d2c58086c9abd05b3"', ">\n                                        <li class=\"link\">\n                                            <a href=\"injectables/DatabaseService.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >DatabaseService</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"modules/ReviewModule.html\" data-type=\"entity-link\" >ReviewModule</a>\n                                    <li class=\"chapter inner\">\n                                        <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#controllers-links-module-ReviewModule-ae7dd544b4906d4920507a01edca8827"' : 'data-target="#xs-controllers-links-module-ReviewModule-ae7dd544b4906d4920507a01edca8827"', ">\n                                            <span class=\"icon ion-md-swap\"></span>\n                                            <span>Controllers</span>\n                                            <span class=\"icon ion-ios-arrow-down\"></span>\n                                        </div>\n                                        <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="controllers-links-module-ReviewModule-ae7dd544b4906d4920507a01edca8827"' : 'id="xs-controllers-links-module-ReviewModule-ae7dd544b4906d4920507a01edca8827"', ">\n                                            <li class=\"link\">\n                                                <a href=\"controllers/ReviewController.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >ReviewController</a>\n                                            </li>\n                                        </ul>\n                                    </li>\n                                <li class=\"chapter inner\">\n                                    <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#injectables-links-module-ReviewModule-ae7dd544b4906d4920507a01edca8827"' : 'data-target="#xs-injectables-links-module-ReviewModule-ae7dd544b4906d4920507a01edca8827"', ">\n                                        <span class=\"icon ion-md-arrow-round-down\"></span>\n                                        <span>Injectables</span>\n                                        <span class=\"icon ion-ios-arrow-down\"></span>\n                                    </div>\n                                    <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="injectables-links-module-ReviewModule-ae7dd544b4906d4920507a01edca8827"' : 'id="xs-injectables-links-module-ReviewModule-ae7dd544b4906d4920507a01edca8827"', ">\n                                        <li class=\"link\">\n                                            <a href=\"injectables/ReviewRepository.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >ReviewRepository</a>\n                                        </li>\n                                        <li class=\"link\">\n                                            <a href=\"injectables/ReviewService.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >ReviewService</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"modules/UserModule.html\" data-type=\"entity-link\" >UserModule</a>\n                                    <li class=\"chapter inner\">\n                                        <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#controllers-links-module-UserModule-89a4cac792b239ac503122c303622830"' : 'data-target="#xs-controllers-links-module-UserModule-89a4cac792b239ac503122c303622830"', ">\n                                            <span class=\"icon ion-md-swap\"></span>\n                                            <span>Controllers</span>\n                                            <span class=\"icon ion-ios-arrow-down\"></span>\n                                        </div>\n                                        <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="controllers-links-module-UserModule-89a4cac792b239ac503122c303622830"' : 'id="xs-controllers-links-module-UserModule-89a4cac792b239ac503122c303622830"', ">\n                                            <li class=\"link\">\n                                                <a href=\"controllers/UserController.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >UserController</a>\n                                            </li>\n                                        </ul>\n                                    </li>\n                                <li class=\"chapter inner\">\n                                    <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#injectables-links-module-UserModule-89a4cac792b239ac503122c303622830"' : 'data-target="#xs-injectables-links-module-UserModule-89a4cac792b239ac503122c303622830"', ">\n                                        <span class=\"icon ion-md-arrow-round-down\"></span>\n                                        <span>Injectables</span>\n                                        <span class=\"icon ion-ios-arrow-down\"></span>\n                                    </div>\n                                    <ul class=\"links collapse\" ").concat(isNormalMode ? 'id="injectables-links-module-UserModule-89a4cac792b239ac503122c303622830"' : 'id="xs-injectables-links-module-UserModule-89a4cac792b239ac503122c303622830"', ">\n                                        <li class=\"link\">\n                                            <a href=\"injectables/UserRepository.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >UserRepository</a>\n                                        </li>\n                                        <li class=\"link\">\n                                            <a href=\"injectables/UserService.html\" data-type=\"entity-link\" data-context=\"sub-entity\" data-context-id=\"modules\" >UserService</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                </ul>\n                </li>\n                    <li class=\"chapter\">\n                        <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#classes-links"' : 'data-target="#xs-classes-links"', ">\n                            <span class=\"icon ion-ios-paper\"></span>\n                            <span>Classes</span>\n                            <span class=\"icon ion-ios-arrow-down\"></span>\n                        </div>\n                        <ul class=\"links collapse \" ").concat(isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"', ">\n                            <li class=\"link\">\n                                <a href=\"classes/AuthDto.html\" data-type=\"entity-link\" >AuthDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/AuthorEntity.html\" data-type=\"entity-link\" >AuthorEntity</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/BaseEntitySchema.html\" data-type=\"entity-link\" >BaseEntitySchema</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/BookEntity.html\" data-type=\"entity-link\" >BookEntity</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/CategoryEntity.html\" data-type=\"entity-link\" >CategoryEntity</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/ConfigService.html\" data-type=\"entity-link\" >ConfigService</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/CreateAuthorDto.html\" data-type=\"entity-link\" >CreateAuthorDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/CreateBookDto.html\" data-type=\"entity-link\" >CreateBookDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/CreateCategoryDto.html\" data-type=\"entity-link\" >CreateCategoryDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/CreateReadingListDto.html\" data-type=\"entity-link\" >CreateReadingListDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/CreateReviewDto.html\" data-type=\"entity-link\" >CreateReviewDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/CreateUserDto.html\" data-type=\"entity-link\" >CreateUserDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/EntityRepository.html\" data-type=\"entity-link\" >EntityRepository</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/ProcessFile.html\" data-type=\"entity-link\" >ProcessFile</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/ReviewEntity.html\" data-type=\"entity-link\" >ReviewEntity</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/UpdateAuthorDto.html\" data-type=\"entity-link\" >UpdateAuthorDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/UpdateBookDto.html\" data-type=\"entity-link\" >UpdateBookDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/UpdateCategoryDto.html\" data-type=\"entity-link\" >UpdateCategoryDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/UpdateReviewDto.html\" data-type=\"entity-link\" >UpdateReviewDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/UpdateUserDto.html\" data-type=\"entity-link\" >UpdateUserDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/UploadBookDto.html\" data-type=\"entity-link\" >UploadBookDto</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"classes/UserEntity.html\" data-type=\"entity-link\" >UserEntity</a>\n                            </li>\n                        </ul>\n                    </li>\n                        <li class=\"chapter\">\n                            <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#injectables-links"' : 'data-target="#xs-injectables-links"', ">\n                                <span class=\"icon ion-md-arrow-round-down\"></span>\n                                <span>Injectables</span>\n                                <span class=\"icon ion-ios-arrow-down\"></span>\n                            </div>\n                            <ul class=\"links collapse \" ").concat(isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"', ">\n                                <li class=\"link\">\n                                    <a href=\"injectables/GoogleAuthGuard.html\" data-type=\"entity-link\" >GoogleAuthGuard</a>\n                                </li>\n                                <li class=\"link\">\n                                    <a href=\"injectables/JwtAuthGuard.html\" data-type=\"entity-link\" >JwtAuthGuard</a>\n                                </li>\n                            </ul>\n                        </li>\n                    <li class=\"chapter\">\n                        <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#guards-links"' : 'data-target="#xs-guards-links"', ">\n                            <span class=\"icon ion-ios-lock\"></span>\n                            <span>Guards</span>\n                            <span class=\"icon ion-ios-arrow-down\"></span>\n                        </div>\n                        <ul class=\"links collapse \" ").concat(isNormalMode ? 'id="guards-links"' : 'id="xs-guards-links"', ">\n                            <li class=\"link\">\n                                <a href=\"guards/RolesGuard.html\" data-type=\"entity-link\" >RolesGuard</a>\n                            </li>\n                        </ul>\n                    </li>\n                    <li class=\"chapter\">\n                        <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#interfaces-links"' : 'data-target="#xs-interfaces-links"', ">\n                            <span class=\"icon ion-md-information-circle-outline\"></span>\n                            <span>Interfaces</span>\n                            <span class=\"icon ion-ios-arrow-down\"></span>\n                        </div>\n                        <ul class=\"links collapse \" ").concat(isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"', ">\n                            <li class=\"link\">\n                                <a href=\"interfaces/ApiOptions.html\" data-type=\"entity-link\" >ApiOptions</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"interfaces/AuthOptions.html\" data-type=\"entity-link\" >AuthOptions</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"interfaces/ConnectionOptions.html\" data-type=\"entity-link\" >ConnectionOptions</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"interfaces/IProcessFile.html\" data-type=\"entity-link\" >IProcessFile</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"interfaces/IResizeImageArgs.html\" data-type=\"entity-link\" >IResizeImageArgs</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"interfaces/RuntimeSetismConfig.html\" data-type=\"entity-link\" >RuntimeSetismConfig</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"interfaces/SuperadminCredentials.html\" data-type=\"entity-link\" >SuperadminCredentials</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"interfaces/SwaggerOptions.html\" data-type=\"entity-link\" >SwaggerOptions</a>\n                            </li>\n                        </ul>\n                    </li>\n                    <li class=\"chapter\">\n                        <div class=\"simple menu-toggler\" data-toggle=\"collapse\" ").concat(isNormalMode ? 'data-target="#miscellaneous-links"' : 'data-target="#xs-miscellaneous-links"', ">\n                            <span class=\"icon ion-ios-cube\"></span>\n                            <span>Miscellaneous</span>\n                            <span class=\"icon ion-ios-arrow-down\"></span>\n                        </div>\n                        <ul class=\"links collapse \" ").concat(isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"', ">\n                            <li class=\"link\">\n                                <a href=\"miscellaneous/enumerations.html\" data-type=\"entity-link\">Enums</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"miscellaneous/functions.html\" data-type=\"entity-link\">Functions</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"miscellaneous/typealiases.html\" data-type=\"entity-link\">Type aliases</a>\n                            </li>\n                            <li class=\"link\">\n                                <a href=\"miscellaneous/variables.html\" data-type=\"entity-link\">Variables</a>\n                            </li>\n                        </ul>\n                    </li>\n                    <li class=\"chapter\">\n                        <a data-type=\"chapter-link\" href=\"coverage.html\"><span class=\"icon ion-ios-stats\"></span>Documentation coverage</a>\n                    </li>\n            </ul>\n        </nav>\n        "));
+      this.innerHTML = tp.strings;
     }
-    if (typeof _cache !== "undefined") {
-      if (_cache.has(Class)) return _cache.get(Class);
-      _cache.set(Class, Wrapper);
-    }
-    function Wrapper() {
-      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
-    }
-    Wrapper.prototype = Object.create(Class.prototype, {
-      constructor: {
-        value: Wrapper,
-        enumerable: false,
-        writable: true,
-        configurable: true,
-      },
-    });
-    return _setPrototypeOf(Wrapper, Class);
-  };
-  return _wrapNativeSuper(Class);
-}
+  }]);
 
-function _construct(Parent, args, Class) {
-  if (_isNativeReflectConstruct()) {
-    _construct = Reflect.construct;
-  } else {
-    _construct = function _construct(Parent, args, Class) {
-      var a = [null];
-      a.push.apply(a, args);
-      var Constructor = Function.bind.apply(Parent, a);
-      var instance = new Constructor();
-      if (Class) _setPrototypeOf(instance, Class.prototype);
-      return instance;
-    };
-  }
-  return _construct.apply(null, arguments);
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _isNativeFunction(fn) {
-  return Function.toString.call(fn).indexOf("[native code]") !== -1;
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf =
-    Object.setPrototypeOf ||
-    function _setPrototypeOf(o, p) {
-      o.__proto__ = p;
-      return o;
-    };
-  return _setPrototypeOf(o, p);
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf
-    ? Object.getPrototypeOf
-    : function _getPrototypeOf(o) {
-        return o.__proto__ || Object.getPrototypeOf(o);
-      };
-  return _getPrototypeOf(o);
-}
-
-customElements.define(
-  "compodoc-menu",
-  /*#__PURE__*/ (function (_HTMLElement) {
-    _inherits(_class, _HTMLElement);
-
-    var _super = _createSuper(_class);
-
-    function _class() {
-      var _this;
-
-      _classCallCheck(this, _class);
-
-      _this = _super.call(this);
-      _this.isNormalMode = _this.getAttribute("mode") === "normal";
-      return _this;
-    }
-
-    _createClass(_class, [
-      {
-        key: "connectedCallback",
-        value: function connectedCallback() {
-          this.render(this.isNormalMode);
-        },
-      },
-      {
-        key: "render",
-        value: function render(isNormalMode) {
-          var tp = lithtml.html(
-            '\n        <nav>\n            <ul class="list">\n                <li class="title">\n                    <a href="index.html" data-type="index-link">\n                        <img alt="" class="img-responsive" data-type="custom-logo" src=images/logo.png>\n                    </a>\n                </li>\n\n                <li class="divider"></li>\n                '
-              .concat(
-                isNormalMode
-                  ? '<div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>'
-                  : "",
-                '\n                <li class="chapter">\n                    <a data-type="chapter-link" href="index.html"><span class="icon ion-ios-home"></span>Getting started</a>\n                    <ul class="links">\n                        <li class="link">\n                            <a href="overview.html" data-type="chapter-link">\n                                <span class="icon ion-ios-keypad"></span>Overview\n                            </a>\n                        </li>\n                        <li class="link">\n                            <a href="index.html" data-type="chapter-link">\n                                <span class="icon ion-ios-paper"></span>README\n                            </a>\n                        </li>\n                        <li class="link">\n                            <a href="contributing.html"  data-type="chapter-link">\n                                <span class="icon ion-ios-paper"></span>CONTRIBUTING\n                            </a>\n                        </li>\n                        <li class="link">\n                            <a href="license.html"  data-type="chapter-link">\n                                <span class="icon ion-ios-paper"></span>LICENSE\n                            </a>\n                        </li>\n                                <li class="link">\n                                    <a href="dependencies.html" data-type="chapter-link">\n                                        <span class="icon ion-ios-list"></span>Dependencies\n                                    </a>\n                                </li>\n                    </ul>\n                </li>\n                    <li class="chapter modules">\n                        <a data-type="chapter-link" href="modules.html">\n                            <div class="menu-toggler linked" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#modules-links"'
-                  : 'data-target="#xs-modules-links"',
-                '>\n                                <span class="icon ion-ios-archive"></span>\n                                <span class="link-name">Modules</span>\n                                <span class="icon ion-ios-arrow-down"></span>\n                            </div>\n                        </a>\n                        <ul class="links collapse " '
-              )
-              .concat(
-                isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"',
-                '>\n                            <li class="link">\n                                <a href="modules/AppModule.html" data-type="entity-link" >AppModule</a>\n                            </li>\n                            <li class="link">\n                                <a href="modules/AuthModule.html" data-type="entity-link" >AuthModule</a>\n                                    <li class="chapter inner">\n                                        <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#controllers-links-module-AuthModule-a8b2371ea82ba863f2ab9f4b1f656f86"'
-                  : 'data-target="#xs-controllers-links-module-AuthModule-a8b2371ea82ba863f2ab9f4b1f656f86"',
-                '>\n                                            <span class="icon ion-md-swap"></span>\n                                            <span>Controllers</span>\n                                            <span class="icon ion-ios-arrow-down"></span>\n                                        </div>\n                                        <ul class="links collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'id="controllers-links-module-AuthModule-a8b2371ea82ba863f2ab9f4b1f656f86"'
-                  : 'id="xs-controllers-links-module-AuthModule-a8b2371ea82ba863f2ab9f4b1f656f86"',
-                '>\n                                            <li class="link">\n                                                <a href="controllers/AuthController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AuthController</a>\n                                            </li>\n                                        </ul>\n                                    </li>\n                                <li class="chapter inner">\n                                    <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#injectables-links-module-AuthModule-a8b2371ea82ba863f2ab9f4b1f656f86"'
-                  : 'data-target="#xs-injectables-links-module-AuthModule-a8b2371ea82ba863f2ab9f4b1f656f86"',
-                '>\n                                        <span class="icon ion-md-arrow-round-down"></span>\n                                        <span>Injectables</span>\n                                        <span class="icon ion-ios-arrow-down"></span>\n                                    </div>\n                                    <ul class="links collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'id="injectables-links-module-AuthModule-a8b2371ea82ba863f2ab9f4b1f656f86"'
-                  : 'id="xs-injectables-links-module-AuthModule-a8b2371ea82ba863f2ab9f4b1f656f86"',
-                '>\n                                        <li class="link">\n                                            <a href="injectables/AuthService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AuthService</a>\n                                        </li>\n                                        <li class="link">\n                                            <a href="injectables/JwtStrategy.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >JwtStrategy</a>\n                                        </li>\n                                        <li class="link">\n                                            <a href="injectables/UserRepository.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >UserRepository</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                            <li class="link">\n                                <a href="modules/AuthorModule.html" data-type="entity-link" >AuthorModule</a>\n                                    <li class="chapter inner">\n                                        <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
-                  : 'data-target="#xs-controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"',
-                '>\n                                            <span class="icon ion-md-swap"></span>\n                                            <span>Controllers</span>\n                                            <span class="icon ion-ios-arrow-down"></span>\n                                        </div>\n                                        <ul class="links collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'id="controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
-                  : 'id="xs-controllers-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"',
-                '>\n                                            <li class="link">\n                                                <a href="controllers/AuthorController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AuthorController</a>\n                                            </li>\n                                        </ul>\n                                    </li>\n                                <li class="chapter inner">\n                                    <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
-                  : 'data-target="#xs-injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"',
-                '>\n                                        <span class="icon ion-md-arrow-round-down"></span>\n                                        <span>Injectables</span>\n                                        <span class="icon ion-ios-arrow-down"></span>\n                                    </div>\n                                    <ul class="links collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'id="injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"'
-                  : 'id="xs-injectables-links-module-AuthorModule-81435766102ef5395edc52c91206f0b3"',
-                '>\n                                        <li class="link">\n                                            <a href="injectables/AuthorRepository.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AuthorRepository</a>\n                                        </li>\n                                        <li class="link">\n                                            <a href="injectables/AuthorService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AuthorService</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                            <li class="link">\n                                <a href="modules/BookModule.html" data-type="entity-link" >BookModule</a>\n                                    <li class="chapter inner">\n                                        <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
-                  : 'data-target="#xs-controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"',
-                '>\n                                            <span class="icon ion-md-swap"></span>\n                                            <span>Controllers</span>\n                                            <span class="icon ion-ios-arrow-down"></span>\n                                        </div>\n                                        <ul class="links collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'id="controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
-                  : 'id="xs-controllers-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"',
-                '>\n                                            <li class="link">\n                                                <a href="controllers/BookController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BookController</a>\n                                            </li>\n                                        </ul>\n                                    </li>\n                                <li class="chapter inner">\n                                    <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
-                  : 'data-target="#xs-injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"',
-                '>\n                                        <span class="icon ion-md-arrow-round-down"></span>\n                                        <span>Injectables</span>\n                                        <span class="icon ion-ios-arrow-down"></span>\n                                    </div>\n                                    <ul class="links collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'id="injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"'
-                  : 'id="xs-injectables-links-module-BookModule-4313a15d9a624c1d85fa25d9a1612d74"',
-                '>\n                                        <li class="link">\n                                            <a href="injectables/BookRepository.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BookRepository</a>\n                                        </li>\n                                        <li class="link">\n                                            <a href="injectables/BookService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >BookService</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                            <li class="link">\n                                <a href="modules/CategoryModule.html" data-type="entity-link" >CategoryModule</a>\n                                    <li class="chapter inner">\n                                        <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
-                  : 'data-target="#xs-controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"',
-                '>\n                                            <span class="icon ion-md-swap"></span>\n                                            <span>Controllers</span>\n                                            <span class="icon ion-ios-arrow-down"></span>\n                                        </div>\n                                        <ul class="links collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'id="controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
-                  : 'id="xs-controllers-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"',
-                '>\n                                            <li class="link">\n                                                <a href="controllers/CategoryController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CategoryController</a>\n                                            </li>\n                                        </ul>\n                                    </li>\n                                <li class="chapter inner">\n                                    <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
-                  : 'data-target="#xs-injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"',
-                '>\n                                        <span class="icon ion-md-arrow-round-down"></span>\n                                        <span>Injectables</span>\n                                        <span class="icon ion-ios-arrow-down"></span>\n                                    </div>\n                                    <ul class="links collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'id="injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"'
-                  : 'id="xs-injectables-links-module-CategoryModule-e411557254c0190eaaa38f6029cb6012"',
-                '>\n                                        <li class="link">\n                                            <a href="injectables/CategoryRepository.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CategoryRepository</a>\n                                        </li>\n                                        <li class="link">\n                                            <a href="injectables/CategoryService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CategoryService</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                            <li class="link">\n                                <a href="modules/ConfigModule.html" data-type="entity-link" >ConfigModule</a>\n                            </li>\n                            <li class="link">\n                                <a href="modules/DatabaseModule.html" data-type="entity-link" >DatabaseModule</a>\n                                <li class="chapter inner">\n                                    <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#injectables-links-module-DatabaseModule-35f284afa0d2276d2c58086c9abd05b3"'
-                  : 'data-target="#xs-injectables-links-module-DatabaseModule-35f284afa0d2276d2c58086c9abd05b3"',
-                '>\n                                        <span class="icon ion-md-arrow-round-down"></span>\n                                        <span>Injectables</span>\n                                        <span class="icon ion-ios-arrow-down"></span>\n                                    </div>\n                                    <ul class="links collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'id="injectables-links-module-DatabaseModule-35f284afa0d2276d2c58086c9abd05b3"'
-                  : 'id="xs-injectables-links-module-DatabaseModule-35f284afa0d2276d2c58086c9abd05b3"',
-                '>\n                                        <li class="link">\n                                            <a href="injectables/DatabaseService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DatabaseService</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                            <li class="link">\n                                <a href="modules/UserModule.html" data-type="entity-link" >UserModule</a>\n                                    <li class="chapter inner">\n                                        <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#controllers-links-module-UserModule-89a4cac792b239ac503122c303622830"'
-                  : 'data-target="#xs-controllers-links-module-UserModule-89a4cac792b239ac503122c303622830"',
-                '>\n                                            <span class="icon ion-md-swap"></span>\n                                            <span>Controllers</span>\n                                            <span class="icon ion-ios-arrow-down"></span>\n                                        </div>\n                                        <ul class="links collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'id="controllers-links-module-UserModule-89a4cac792b239ac503122c303622830"'
-                  : 'id="xs-controllers-links-module-UserModule-89a4cac792b239ac503122c303622830"',
-                '>\n                                            <li class="link">\n                                                <a href="controllers/UserController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >UserController</a>\n                                            </li>\n                                        </ul>\n                                    </li>\n                                <li class="chapter inner">\n                                    <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#injectables-links-module-UserModule-89a4cac792b239ac503122c303622830"'
-                  : 'data-target="#xs-injectables-links-module-UserModule-89a4cac792b239ac503122c303622830"',
-                '>\n                                        <span class="icon ion-md-arrow-round-down"></span>\n                                        <span>Injectables</span>\n                                        <span class="icon ion-ios-arrow-down"></span>\n                                    </div>\n                                    <ul class="links collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'id="injectables-links-module-UserModule-89a4cac792b239ac503122c303622830"'
-                  : 'id="xs-injectables-links-module-UserModule-89a4cac792b239ac503122c303622830"',
-                '>\n                                        <li class="link">\n                                            <a href="injectables/UserRepository.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >UserRepository</a>\n                                        </li>\n                                        <li class="link">\n                                            <a href="injectables/UserService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >UserService</a>\n                                        </li>\n                                    </ul>\n                                </li>\n                            </li>\n                </ul>\n                </li>\n                    <li class="chapter">\n                        <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#classes-links"'
-                  : 'data-target="#xs-classes-links"',
-                '>\n                            <span class="icon ion-ios-paper"></span>\n                            <span>Classes</span>\n                            <span class="icon ion-ios-arrow-down"></span>\n                        </div>\n                        <ul class="links collapse " '
-              )
-              .concat(
-                isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"',
-                '>\n                            <li class="link">\n                                <a href="classes/AuthDto.html" data-type="entity-link" >AuthDto</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/AuthorEntity.html" data-type="entity-link" >AuthorEntity</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/BaseEntitySchema.html" data-type="entity-link" >BaseEntitySchema</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/BookEntity.html" data-type="entity-link" >BookEntity</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/CategoryEntity.html" data-type="entity-link" >CategoryEntity</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/ConfigService.html" data-type="entity-link" >ConfigService</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/CreateAuthorDto.html" data-type="entity-link" >CreateAuthorDto</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/CreateBookDto.html" data-type="entity-link" >CreateBookDto</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/CreateCategoryDto.html" data-type="entity-link" >CreateCategoryDto</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/CreateReadingListDto.html" data-type="entity-link" >CreateReadingListDto</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/CreateUserDto.html" data-type="entity-link" >CreateUserDto</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/EntityRepository.html" data-type="entity-link" >EntityRepository</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/ProcessFile.html" data-type="entity-link" >ProcessFile</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/UpdateAuthorDto.html" data-type="entity-link" >UpdateAuthorDto</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/UpdateBookDto.html" data-type="entity-link" >UpdateBookDto</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/UpdateCategoryDto.html" data-type="entity-link" >UpdateCategoryDto</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/UpdateUserDto.html" data-type="entity-link" >UpdateUserDto</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/UploadBookDto.html" data-type="entity-link" >UploadBookDto</a>\n                            </li>\n                            <li class="link">\n                                <a href="classes/UserEntity.html" data-type="entity-link" >UserEntity</a>\n                            </li>\n                        </ul>\n                    </li>\n                        <li class="chapter">\n                            <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#injectables-links"'
-                  : 'data-target="#xs-injectables-links"',
-                '>\n                                <span class="icon ion-md-arrow-round-down"></span>\n                                <span>Injectables</span>\n                                <span class="icon ion-ios-arrow-down"></span>\n                            </div>\n                            <ul class="links collapse " '
-              )
-              .concat(
-                isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"',
-                '>\n                                <li class="link">\n                                    <a href="injectables/JwtAuthGuard.html" data-type="entity-link" >JwtAuthGuard</a>\n                                </li>\n                            </ul>\n                        </li>\n                    <li class="chapter">\n                        <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#guards-links"'
-                  : 'data-target="#xs-guards-links"',
-                '>\n                            <span class="icon ion-ios-lock"></span>\n                            <span>Guards</span>\n                            <span class="icon ion-ios-arrow-down"></span>\n                        </div>\n                        <ul class="links collapse " '
-              )
-              .concat(
-                isNormalMode ? 'id="guards-links"' : 'id="xs-guards-links"',
-                '>\n                            <li class="link">\n                                <a href="guards/RolesGuard.html" data-type="entity-link" >RolesGuard</a>\n                            </li>\n                        </ul>\n                    </li>\n                    <li class="chapter">\n                        <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#interfaces-links"'
-                  : 'data-target="#xs-interfaces-links"',
-                '>\n                            <span class="icon ion-md-information-circle-outline"></span>\n                            <span>Interfaces</span>\n                            <span class="icon ion-ios-arrow-down"></span>\n                        </div>\n                        <ul class="links collapse " '
-              )
-              .concat(
-                isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"',
-                '>\n                            <li class="link">\n                                <a href="interfaces/ApiOptions.html" data-type="entity-link" >ApiOptions</a>\n                            </li>\n                            <li class="link">\n                                <a href="interfaces/AuthOptions.html" data-type="entity-link" >AuthOptions</a>\n                            </li>\n                            <li class="link">\n                                <a href="interfaces/ConnectionOptions.html" data-type="entity-link" >ConnectionOptions</a>\n                            </li>\n                            <li class="link">\n                                <a href="interfaces/IProcessFile.html" data-type="entity-link" >IProcessFile</a>\n                            </li>\n                            <li class="link">\n                                <a href="interfaces/IResizeImageArgs.html" data-type="entity-link" >IResizeImageArgs</a>\n                            </li>\n                            <li class="link">\n                                <a href="interfaces/RuntimeSetismConfig.html" data-type="entity-link" >RuntimeSetismConfig</a>\n                            </li>\n                            <li class="link">\n                                <a href="interfaces/SuperadminCredentials.html" data-type="entity-link" >SuperadminCredentials</a>\n                            </li>\n                            <li class="link">\n                                <a href="interfaces/SwaggerOptions.html" data-type="entity-link" >SwaggerOptions</a>\n                            </li>\n                        </ul>\n                    </li>\n                    <li class="chapter">\n                        <div class="simple menu-toggler" data-toggle="collapse" '
-              )
-              .concat(
-                isNormalMode
-                  ? 'data-target="#miscellaneous-links"'
-                  : 'data-target="#xs-miscellaneous-links"',
-                '>\n                            <span class="icon ion-ios-cube"></span>\n                            <span>Miscellaneous</span>\n                            <span class="icon ion-ios-arrow-down"></span>\n                        </div>\n                        <ul class="links collapse " '
-              )
-              .concat(
-                isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"',
-                '>\n                            <li class="link">\n                                <a href="miscellaneous/enumerations.html" data-type="entity-link">Enums</a>\n                            </li>\n                            <li class="link">\n                                <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>\n                            </li>\n                            <li class="link">\n                                <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>\n                            </li>\n                            <li class="link">\n                                <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>\n                            </li>\n                        </ul>\n                    </li>\n                    <li class="chapter">\n                        <a data-type="chapter-link" href="coverage.html"><span class="icon ion-ios-stats"></span>Documentation coverage</a>\n                    </li>\n            </ul>\n        </nav>\n        '
-              )
-          );
-          this.innerHTML = tp.strings;
-        },
-      },
-    ]);
-
-    return _class;
-  })(/*#__PURE__*/ _wrapNativeSuper(HTMLElement))
-);
+  return _class;
+}( /*#__PURE__*/_wrapNativeSuper(HTMLElement)));
