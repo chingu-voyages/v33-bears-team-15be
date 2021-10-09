@@ -32,6 +32,16 @@ export class AuthController {
     return this.authService.loginWithEmailAndPassword(authDto);
   }
 
+  @ApiBody({ type: AuthDto })
+  @ApiOkResponse({ description: "The record has been successfully returned." })
+  @ApiBadRequestResponse({ description: "The record has failed validation." })
+  @ApiUnauthorizedResponse({ description: "Unauthorized action, only for admins." })
+  @ApiForbiddenResponse({ description: "Forbidden!" })
+  @Post("signin-admin")
+  public async adminLogin(@Body() authDto: AuthDto) {
+    return this.authService.adminLogin(authDto);
+  }
+
   @ApiBody({ type: CreateUserDto })
   @ApiCreatedResponse({ description: "The record has been successfully created." })
   @ApiBadRequestResponse({ description: "The record has failed validation." })
