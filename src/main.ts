@@ -45,7 +45,7 @@ async function bootstrap() {
   SwaggerModule.setup("/", app, createdocument(app), options);
 
   await app.listen(port, () => {
-    Logger.log(`Running at ${hostname}:${port}`, LOG_LABEL);
+    Logger.log(`Running at ${hostname}`, LOG_LABEL);
     Logger.log(`Running in ${env} mode`, LOG_LABEL);
   });
 }
