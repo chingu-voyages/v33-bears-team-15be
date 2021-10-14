@@ -3,7 +3,6 @@ import { IsDefined, IsEmail, MaxLength, MinLength } from "class-validator";
 
 export class CreateUserDto {
   @ApiProperty({
-    type: "String",
     description: "Email address",
     default: "test@email.com",
   })
@@ -11,20 +10,20 @@ export class CreateUserDto {
   @IsDefined({ message: "Email address must not be empty!" })
   email!: string;
 
-  @ApiProperty({ type: "String", description: "User password", default: "password123" })
+  @ApiProperty({ description: "User password", default: "password123" })
   @IsDefined({ message: "Password must not be empty!" })
   @MinLength(6, { message: "Passowrd must have at least 6 characters!" })
   @MaxLength(32, { message: "Password must be at most 32 characters!" })
   password!: string;
 
-  @ApiProperty({ type: "String", description: "User full name", default: "Api Fullname" })
+  @ApiProperty({ description: "User full name", default: "Api Fullname" })
   @IsDefined({ message: "Name must not be empty!" })
   @MinLength(4, { message: "Name must be at least 4 characters!" })
   @MaxLength(26, { message: "Name must be at most 26 characters!" })
   fullName!: string;
 
-  @ApiProperty({ type: "String", description: "User name" })
-  @IsDefined({ message: "Username must be provided!" })
+  @ApiProperty({ description: "User name" })
+  @IsDefined({ message: "Username must not be empty!" })
   @MinLength(3, { message: "Usernames must have at least 3 characters!" })
   @MaxLength(12, { message: "Usernames must be at most 12 characters!" })
   username!: string;
