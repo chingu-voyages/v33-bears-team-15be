@@ -50,7 +50,7 @@ export class BookController {
     ])
   )
   // Method
-  @Post("create")
+  @Post()
   create(@UploadedFiles() files: UploadBookDto, @Body() createBookDto: CreateBookDto) {
     return this.bookService.create(files, createBookDto);
   }

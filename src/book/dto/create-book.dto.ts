@@ -44,11 +44,11 @@ export class CreateBookDto {
 
   @ApiProperty({
     description: "A list of book category ID references",
-    default: [""],
+    default: "",
   })
-  @IsString({ each: true, message: "Category must be of type string!" })
+  @IsString({ message: "Category must be of type string!" })
   @IsDefined({ message: "Categories must not be empty!" })
-  categories!: string[];
+  categories!: string;
 
   @ApiProperty({ description: "Date of the book release", default: 1519211809934 })
   @IsNumberString({}, { message: "Release Date must be a positive number!" })
