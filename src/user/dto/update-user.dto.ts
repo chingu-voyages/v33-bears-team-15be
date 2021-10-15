@@ -6,8 +6,8 @@ import { CreateUserDto } from "../../auth/dto/create-user.dto";
 export class UpdateUserDto extends PartialType(CreateUserDto) {
   @ApiProperty({ type: "string", description: "Username", required: false })
   @IsOptional()
-  @MinLength(4, { message: "Username must be at least 4 characters!" })
-  @MaxLength(14, { message: "Username must be at least 12 characters!" })
+  @MinLength(3, { message: "Username must be at least 3 characters!" })
+  @MaxLength(12, { message: "Username must be at least 12 characters!" })
   username?: string;
 
   @ApiProperty({ type: "string", description: "User avatar", required: false })

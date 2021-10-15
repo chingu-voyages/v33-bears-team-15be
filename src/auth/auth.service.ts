@@ -28,6 +28,9 @@ export class AuthService {
     fullName: string,
     username: string
   ) {
+    const defaultAvatarPath =
+      "avatars/default-avatar/1634040343132-a05fa350-3621-4bf0-be27-e3867db78d88.jpeg";
+
     const userRecord = await this.userRepository.create({
       email,
       username,
@@ -38,6 +41,7 @@ export class AuthService {
       lastLogin: new Date(Date.now()),
       readingList: [],
       wishList: [],
+      avatar: `/static/${defaultAvatarPath}`,
     });
 
     const { password, __v, ...userRecordWithoutPassword } = userRecord.toObject();
@@ -117,12 +121,13 @@ export class AuthService {
     const userRecord = await this.userRepository.findOne({ email: r.email });
     if (!userRecord) throw new NotFoundException("Record not found!");
 
-    const userRole = (): string => userRecord.role;
+    const userRole = (): RoleType => userRecord.role;
 
-    if (userRole() !== Role.SUPER_ADMIN || userRole() !== Role.ADMIN)
+    if (userRole() !== Role.SUPER_ADMIN && userRole() !== Role.ADMIN) {
       throw new UnauthorizedException(
-        "You shall not pass! account level not authorized to access this resource!"
+        "You shall not pass! Account level not authorized to access this resource!"
       );
+    }
 
     const isPasswordValid = await argon2.verify(
       userRecord.password,
@@ -148,9 +153,14 @@ export class AuthService {
     username,
   }: CreateUserDto) {
     const isEmailTaken = await this.userRepository.findOne({ email });
+    const isUsernameTaken = await this.userRepository.findOne({ username });
 
     if (isEmailTaken) {
       throw new ConflictException("Email address already in use!");
+    }
+
+    if (isUsernameTaken) {
+      throw new ConflictException("Username already in use!");
     }
 
     const hashedPassword = await argon2.hash(p + this.configService.authOptions.pepper);

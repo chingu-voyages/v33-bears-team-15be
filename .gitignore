@@ -13,7 +13,13 @@ lerna-debug.log*
 
 # OS
 .DS_Store
-/bucket
+
+# Bucket
+# ignore everything except the `default-avatar` 
+bucket/*
+!bucket/avatars
+bucket/avatars/*
+!bucket/avatars/default-avatar
 
 # Tests
 /coverage

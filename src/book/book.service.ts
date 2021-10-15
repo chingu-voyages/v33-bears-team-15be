@@ -48,7 +48,8 @@ export class BookService {
       srcCoverPath: coverPath,
       srcPath: bookPath,
       reviews: [],
-      categories: [],
+      // Comes from a FormData as a string
+      categories: b.categories.split(","),
       totalReviews: 0,
     });
     Logger.log(`Create new book: ${newBookRecord._id}`, BookService.name);
@@ -87,10 +88,10 @@ export class BookService {
       throw new NotFoundException("No book record found!");
     }
 
-    const updatedBookRecord = await this.bookRepository.findByIdAndUpdate(
-      id,
-      updateBookDto
-    );
+    const updatedBookRecord = await this.bookRepository.findByIdAndUpdate(id, {
+      ...updateBookDto,
+      categories: updateBookDto.categories?.split(",") || bookRecord.categories,
+    });
 
     Logger.log(`Update book: ${bookRecord._id}\n\n${updateBookDto}`, BookService.name);
 

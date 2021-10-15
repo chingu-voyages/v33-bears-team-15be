@@ -13,7 +13,7 @@
   "license": "MIT",
   "engines": {
     "node": "14.17.6",
-    "yarn": "1.22.11"
+    "yarn": "1.22.15"
   },
   "scripts": {
     "prebuild": "rimraf dist",
@@ -122,6 +122,6 @@
   },
   "volta": {
     "node": "14.17.6",
-    "yarn": "1.22.11"
+    "yarn": "1.22.15"
   }
 }

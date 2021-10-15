@@ -13,14 +13,14 @@ export class UserEntity extends BaseEntitySchema {
   public email!: string;
 
   @Prop({
-    type: String,
+    required: true,
+    unique: true,
     trim: true,
-    default: null,
     minlength: 3,
     maxlength: 12,
     lowercase: true,
   })
-  public username!: string | null;
+  public username!: string;
 
   @Prop({ default: "local", lowercase: true, trim: true })
   public provider!: string;

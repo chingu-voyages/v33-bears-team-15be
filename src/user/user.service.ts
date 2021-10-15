@@ -8,6 +8,16 @@ import { CreateReadingListDto } from "./dto/readingList-create.dto";
 export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
+  /**
+   * @TODO
+   * We need a better way to serialize this fn, the
+   * way we did it rn, it will require us to loop over
+   * the whole array and remove properties from the user obj
+   * which at a high amout of users is possible for a get query.
+   *
+   * This fn is only available for admin/super-admin roles,
+   * for now it's good, but needs to be done asap after the MVP
+   */
   public async index() {
     const userRecords = await this.userRepository.find();
 
@@ -25,7 +35,10 @@ export class UserService {
       throw new NotFoundException("No user record found!");
     }
 
-    return userRecord;
+    const { password, __v, firstLogin, lastLogin, internalComment, ...restUserRecord } =
+      userRecord.toObject();
+
+    return restUserRecord;
   }
 
   public async update(id: string, updateUserDto: UpdateUserDto) {
@@ -36,19 +49,21 @@ export class UserService {
     }
 
     const updatedUserObject = {
-      email: updateUserDto.email || userRecord.email,
-      password: updateUserDto.password || userRecord.password,
-      username: updateUserDto.username || userRecord.username,
-      fullName: updateUserDto.fullName || userRecord.fullName,
-      avatar: updateUserDto.avatar || userRecord.avatar,
-      birthday: updateUserDto.birthday || userRecord.birthday,
-      biography: updateUserDto.biography || userRecord.biography,
+      ...updateUserDto,
       wishList: updateUserDto.newWish
         ? [...userRecord.wishList, updateUserDto.newWish]
         : [...userRecord.wishList],
     };
 
-    return this.userRepository.findByIdAndUpdate(id, updatedUserObject);
+    const updatedUserRecord = await this.userRepository.findByIdAndUpdate(
+      id,
+      updatedUserObject
+    );
+
+    const { password, __v, firstLogin, lastLogin, internalComment, ...restUserRecord } =
+      updatedUserRecord.toObject();
+
+    return restUserRecord;
   }
 
   public async remove(id: string) {
