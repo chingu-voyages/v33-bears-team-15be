@@ -3,6 +3,7 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { UserRepository } from "./models/user.repository";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { CreateReadingListDto } from "./dto/readingList-create.dto";
+import { UserDocument } from "./models/user.entity";
 
 @Injectable()
 export class UserService {
@@ -58,7 +59,7 @@ export class UserService {
     const updatedUserRecord = await this.userRepository.findByIdAndUpdate(
       id,
       updatedUserObject
-    );
+    ) as UserDocument;
 
     const { password, __v, firstLogin, lastLogin, internalComment, ...restUserRecord } =
       updatedUserRecord.toObject();
